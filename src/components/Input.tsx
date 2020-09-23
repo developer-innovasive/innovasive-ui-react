@@ -19,7 +19,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   placeholder,
   error,
   disabled,
-  value,
+  value = "",
   type = "text",
   innerRef,
   onChange,
