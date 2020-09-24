@@ -26,7 +26,7 @@ export const TextInput: React.FC<TextInputProps> = ({
 }) => {
   return (
     <div>
-      <div className="mb-2">{label}</div>
+      <div className="mb-8">{label}</div>
       <input
         ref={innerRef}
         type={type || "text"}
@@ -37,7 +37,7 @@ export const TextInput: React.FC<TextInputProps> = ({
             : "bg-white"
         } ${
           error ? "border-innovasive-ui-error" : "focus:border-black "
-        }  outline-none h-12 px-6 transition-all duration-200 ease-in-out placeholder`}
+        }  outline-none h-48 px-24 transition-all duration-200 ease-in-out placeholder`}
         style={{
           borderRadius: "3px",
         }}
@@ -46,9 +46,9 @@ export const TextInput: React.FC<TextInputProps> = ({
         onChange={(e) => onChange && onChange(e)}
       />
       <div
-        className={`mt-2 text-innovasive-ui-error transform ${
-          error ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"
-        } transition-all h-6 duration-500 ease-in-out`}
+        className={`mt-8 text-innovasive-ui-error transform ${
+          error ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-16"
+        } transition-all h-24 duration-500 ease-in-out`}
       >
         {error}
       </div>
