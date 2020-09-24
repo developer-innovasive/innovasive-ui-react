@@ -16,12 +16,16 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-paginate": "^6.2.1",
+    "@types/react-table": "^7.0.23",
     "classnames": "^2.2.6",
     "formik": "^2.1.5",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-paginate": "^6.5.0",
     "react-scripts": "3.4.3",
+    "react-table": "^7.5.1",
     "typescript": "~3.7.2"
   },
   "scripts": {

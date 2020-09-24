@@ -25,7 +25,7 @@ html {
 
   .sub-heading1 {
     font-size: 0.875rem;
-    @apply font-innovasive-ui-label font-medium;
+    @apply text-innovasive-ui-grey font-innovasive-ui-label font-medium;
   }
 
   .sub-heading2 {
