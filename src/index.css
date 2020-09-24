@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .heading1 {
+    @apply font-innovasive-ui-label font-medium text-2xl;
+  }
+
+  .heading2 {
+    @apply font-innovasive-ui-label font-medium text-base;
+  }
+
+  .text-body {
+    @apply font-innovasive-ui-value font-light text-base;
+  }
+
+  .sub-heading1 {
+    font-size: 0.875rem;
+    @apply font-innovasive-ui-label font-medium;
+  }
+
+  .sub-heading2 {
+    @apply font-innovasive-ui-value font-bold text-xs;
+  }
+
+  .caption1 {
+    @apply font-innovasive-ui-value font-light text-xs;
+  }
+
+  .caption2 {
+    font-size: 0.5rem;
+    @apply font-innovasive-ui-value font-light;
+  }
+
+  .caption3 {
+    font-size: 0.5rem;
+    @apply font-innovasive-ui-label font-medium text-xs;
+  }
+}
