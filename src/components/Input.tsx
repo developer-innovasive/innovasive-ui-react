@@ -56,9 +56,11 @@ export const TextInput: React.FC<TextInputProps> = ({
   );
 };
 
-export type TextInputFormikProps = {
-  name: string;
+export type FormikProps = {
+  name?: string;
 };
+
+export type TextInputFormikProps = TextInputProps & FormikProps;
 
 export const TextInputFormik: React.FC<TextInputFormikProps> = (
   props: TextInputFormikProps
