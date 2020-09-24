@@ -8,17 +8,21 @@ module.exports = {
       content: ['./src/**/*.tsx'],
     },
     colors: {
+      white: '#FFFFFF',
+      black: '#000000',
+
       'innovasive-ui': {
+        black: '#191D3C',
+
         error: '#DA0000',
         'disabled-light': '#F8F8F8',
         'disabled-dark': '#E2E1E6',
-        black: '#191D3C',
+
         grey: '#898D9E',
         'grey-medium': '#E2E1E6',
         'grey-light': '#F1F1F2',
       },
     },
-
     fontFamily: {
       'innovasive-ui-label': ['Kanit'],
       'innovasive-ui-value': ['Sarabun'],
