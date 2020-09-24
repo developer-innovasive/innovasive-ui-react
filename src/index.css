@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply antialiased;
+}
+
 @layer base {
   .heading1 {
     @apply font-innovasive-ui-label font-medium text-2xl;
@@ -13,6 +17,10 @@
 
   .text-body {
     @apply font-innovasive-ui-value font-light text-base;
+  }
+
+  .text-error {
+    @apply font-innovasive-ui-value font-light text-sm;
   }
 
   .sub-heading1 {
