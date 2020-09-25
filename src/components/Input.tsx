@@ -60,7 +60,7 @@ export const TextInput: React.FC<TextInputProps> = ({
 };
 
 export type FormikProps = {
-  name?: string;
+  name: string;
 };
 
 export type TextInputFormikProps = TextInputProps & FormikProps;
