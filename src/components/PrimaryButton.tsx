@@ -26,7 +26,7 @@ export const Button: React.FC<ButtonProps> = ({ color = '#0010F7', children, inn
     <div
       onClick={onClick}
       className={classNames(
-        'relative p-4 flex justify-center items-center cursor-pointer overflow-hidden select-none',
+        'relative flex justify-center items-center cursor-pointer overflow-hidden select-none',
         size === 'Primary' ? 'h-40' : 'h-32'
       )}
       onMouseOver={() => hoverHandler(true)}
