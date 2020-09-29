@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import './PrimaryButton.css'
+import './Button.css'
 
-import { Button, ButtonProps } from './PrimaryButton'
+import { Button, ButtonProps } from '../index'
 
 export default {
   title: 'Button',
