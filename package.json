@@ -1,7 +1,6 @@
 {
   "name": "innovasive-ui-react",
   "version": "0.1.0",
-  "private": true,
   "engines": {
     "node": "12.18.4"
   },
