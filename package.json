@@ -1,6 +1,8 @@
 {
   "name": "innovasive-ui-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "repository": "developer-innovasive/innovasive-ui-react",
+  "main": "src/index.tsx",
   "engines": {
     "node": "12.18.4"
   },
