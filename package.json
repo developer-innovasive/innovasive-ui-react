@@ -1,6 +1,6 @@
 {
   "name": "innovasive-ui-react",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": "developer-innovasive/innovasive-ui-react",
   "main": "src/index.tsx",
   "engines": {

@@ -1,3 +1,5 @@
+import '../types/react-table-config'
+
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { TableOptions, usePagination, useTable } from 'react-table'
