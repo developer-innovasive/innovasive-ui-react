@@ -1,5 +1,3 @@
-import '../types/react-table-config'
-
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { TableOptions, usePagination, useTable } from 'react-table'
@@ -14,21 +12,21 @@ export const DataTable = (options: TableOptions<any>) => {
       <div className="rounded-lg overflow-hidden border-l border-r border-innovasive-ui-grey-light">
         <table {...getTableProps()} className="w-full">
           <thead className="h-48 bg-innovasive-ui-grey-light">
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map(headerGroup => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
+                {headerGroup.headers.map(column => (
                   <td className="sub-heading1 py-16 text-left px-24">{column.render('Header')}</td>
                 ))}
               </tr>
             ))}
           </thead>
           <tbody {...getTableBodyProps()} className="bg-white">
-            {page.map((row) => {
+            {page.map(row => {
               prepareRow(row)
 
               return (
                 <tr {...row.getRowProps()} className="border-b border-innovasive-ui-grey-light hover:bg-innovasive-ui-grey-light">
-                  {row.cells.map((cell) => (
+                  {row.cells.map(cell => (
                     <td {...cell.getCellProps()} className="text-body py-16 px-24">
                       {cell.render('Cell')}
                     </td>
@@ -45,7 +43,7 @@ export const DataTable = (options: TableOptions<any>) => {
           pageCount={pageCount}
           pageRangeDisplayed={3}
           marginPagesDisplayed={1}
-          onPageChange={(item) => gotoPage(item.selected)}
+          onPageChange={item => gotoPage(item.selected)}
           previousLabel={
             <div className="flex items-center cursor-pointer border-r border-innovasive-ui-grey-medium pr-8">
               <div className="text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-grey-light transition-all duration-300">

@@ -1,12 +1,13 @@
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
+  purge: {
+    layers: ['utilities'],
+    content: ['src/**/*.tsx'],
+  },
   theme: {
-    future: {
-      removeDeprecatedGapUtilities: true,
-      purgeLayersByDefault: true,
-    },
-    purge: {
-      content: ['./src/**/*.tsx'],
-    },
     colors: {
       white: '#FFFFFF',
       black: '#191D3C',
@@ -127,9 +128,5 @@ module.exports = {
       '640': '640px',
       '1280': '1280px',
     },
-    variants: {
-      spacing: ['first'],
-    },
-    plugins: [],
   },
-}
+};

@@ -1,7 +1,5 @@
-import './Input.css'
-
-import React, { ChangeEvent, KeyboardEvent } from 'react'
 import { Field } from 'formik'
+import React, { ChangeEvent, KeyboardEvent } from 'react'
 
 export type TextInputProps = {
   label?: string
@@ -43,8 +41,8 @@ export const TextInput: React.FC<TextInputProps> = ({
         }}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange && onChange(e)}
-        onKeyPress={(e) => onKeyPress && onKeyPress(e)}
+        onChange={e => onChange && onChange(e)}
+        onKeyPress={e => onKeyPress && onKeyPress(e)}
       />
       <div
         className={`mt-8 text-innovasive-ui-error transform text-body ${

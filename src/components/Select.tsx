@@ -1,5 +1,3 @@
-import './Select.css'
-
 import classnames from 'classnames'
 import { Field } from 'formik'
 import { isEmpty, isEqual } from 'lodash'
@@ -87,7 +85,7 @@ export const Select: FC<SelectProps> = ({ label, value, options, disabled, error
         {isOpen && (
           <div className="absolute w-full max-h-160 overflow-y-scroll mt-4 border border-innovasive-ui-grey-medium rounded shadow-md overflow-hidden bg-white">
             <ul>
-              {options?.map((o) => (
+              {options?.map(o => (
                 <li
                   key={o.id}
                   onClick={() => handleOnSelect(o.value)}

@@ -1,5 +1,5 @@
-import React, { ReactElement, MouseEvent, useRef } from 'react'
 import classNames from 'classnames'
+import React, { MouseEvent, ReactElement, useRef } from 'react'
 
 export type ButtonProps = {
   color?: string
@@ -9,7 +9,7 @@ export type ButtonProps = {
   onClick?: (e?: MouseEvent<HTMLDivElement>) => void
 }
 
-export const Button: React.FC<ButtonProps> = ({ color = '#0010F7', children, innerRef, onClick, size = 'Primary' }) => {
+export const Button: React.FC<ButtonProps> = ({ color = '#0010F7', children, onClick, size = 'Primary' }) => {
   var hoverRef = useRef<HTMLDivElement>(null)
 
   function hoverHandler(state: boolean) {
