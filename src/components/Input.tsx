@@ -26,16 +26,16 @@ export const TextInput: React.FC<TextInputProps> = ({
 }) => {
   return (
     <div>
-      <div className="mb-8 label text-body">{label}</div>
+      <div className="mb-8 leading-3 inno-label text-innovasive-ui-label">{label}</div>
       <input
         ref={innerRef}
         type={type || 'text'}
         disabled={disabled}
-        className={`w-full border text-body ${
-          disabled ? 'bg-innovasive-ui-disabled-light border-innovasive-ui-disabled-dark cursor-not-allowed' : 'bg-white'
+        className={`w-full border inno-placeholder ${
+          disabled ? 'bg-innovasive-ui-disabled-bg border-innovasive-ui-disabled-border cursor-not-allowed' : 'bg-white border-innovasive-ui-border'
         } ${
           error ? 'border-innovasive-ui-error' : 'focus:border-black '
-        }  outline-none h-48 px-24 transition-all duration-200 ease-in-out placeholder`}
+        }  outline-none h-40 px-24 transition-all duration-200 ease-in-out placeholder text-innovasive-ui-placeholder`}
         style={{
           borderRadius: '3px',
         }}
@@ -45,8 +45,8 @@ export const TextInput: React.FC<TextInputProps> = ({
         onKeyPress={e => onKeyPress && onKeyPress(e)}
       />
       <div
-        className={`mt-8 text-innovasive-ui-error transform text-body ${
-          error ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-16'
+        className={`mt-8 leading-3 text-innovasive-ui-error transform inno-label ${
+          error ? 'opacity-1 00 translate-y-0' : 'opacity-0 -translate-y-16'
         } transition-all h-24 duration-500 ease-in-out`}
       >
         {error}

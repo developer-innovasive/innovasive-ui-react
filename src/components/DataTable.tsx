@@ -11,7 +11,7 @@ export const DataTable = (options: TableOptions<any>) => {
     <div>
       <div className="rounded-lg overflow-hidden border-l border-r border-innovasive-ui-grey-light">
         <table {...getTableProps()} className="w-full">
-          <thead className="h-48 bg-innovasive-ui-grey-light">
+          <thead className="h-48 bg-innovasive-ui-table-header-bg">
             {headerGroups.map(headerGroup => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map(column => (

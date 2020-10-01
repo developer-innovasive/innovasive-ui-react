@@ -12,14 +12,16 @@ type SelectOption = {
 
 export type SelectProps = {
   label?: string
+  placeholder?: string
   value: string
   options: SelectOption[]
   disabled: boolean
   error?: string
+  textSize?: 'small' | 'default'
   onChange?: (value: any) => void
 }
 
-export const Select: FC<SelectProps> = ({ label, value, options, disabled, error, onChange }) => {
+export const Select: FC<SelectProps> = ({ label, value, options, disabled, error, onChange, placeholder, textSize = 'default' }) => {
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>
   useOnClickOutside(ref, () => setIsOpen(false))
   const [isOpen, setIsOpen] = useState(false)
@@ -38,11 +40,12 @@ export const Select: FC<SelectProps> = ({ label, value, options, disabled, error
 
   return (
     <div className="h-72">
+      <div className="mb-8 leading-3 inno-label text-innovasive-ui-label">{label}</div>
       <div
         ref={ref}
         className={classnames('relative', {
           'bg-white': !disabled,
-          'bg-innovasive-ui-disabled-light': disabled,
+          'bg-innovasive-ui-disabled-bg': disabled,
         })}
       >
         <button
@@ -50,27 +53,26 @@ export const Select: FC<SelectProps> = ({ label, value, options, disabled, error
           onClick={handleOnClick}
           type="button"
           className={classnames('rounded border w-full h-40 px-24 focus:outline-none', {
-            'cursor-not-allowed border-innovasive-ui-disabled-light': disabled,
-            'border-innovasive-ui-grey-medium': !isError,
+            'cursor-not-allowed border-innovasive-ui-disabled-border': disabled,
+            'border-innovasive-ui-border': !isError,
             'border-innovasive-ui-error': isError,
           })}
         >
           <div className="flex items-center">
             <span
-              className={classnames('text-body', {
-                'text-innovasive-ui-grey': isNoValue,
-                'text-innovasive-ui-black': !isNoValue || !disabled,
-                'text-innovasive-ui-grey-medium': disabled,
-              })}
+              className={classnames(
+                { 'inno-options-small': textSize === 'small', 'inno-options-default': textSize !== 'small' },
+                'text-innovasive-ui-placeholder'
+              )}
             >
-              {isNoValue ? label : value}
+              {isNoValue ? placeholder : value}
             </span>
           </div>
           <span className="absolute inset-y-0 right-0 flex items-center pr-24 pointer-events-none">
             <svg
               className={classnames('fill-current', {
-                'text-innovasive-ui-grey': !disabled,
-                'text-innovasive-ui-disabled-dark': disabled,
+                'text-innovasive-ui-placeholder': !disabled,
+                'text-innovasive-ui-disabled-border': disabled,
               })}
               width="11"
               height="7"
@@ -83,25 +85,27 @@ export const Select: FC<SelectProps> = ({ label, value, options, disabled, error
           </span>
         </button>
         {isOpen && (
-          <div className="absolute w-full max-h-160 overflow-y-scroll mt-4 border border-innovasive-ui-grey-medium rounded shadow-md overflow-hidden bg-white">
+          <div className="absolute w-full max-h-160 overflow-y-scroll mt-4 border border-innovasive-ui-border rounded shadow-md overflow-hidden bg-white">
             <ul>
               {options?.map(o => (
                 <li
                   key={o.id}
                   onClick={() => handleOnSelect(o.value)}
                   className={classnames('h-40 flex items-center px-24 cursor-pointer bg-white', {
-                    'bg-innovasive-ui-grey-medium hover:bg-innovasive-ui-grey-medium': isEqual(value, o.value),
-                    'hover:bg-innovasive-ui-grey-light': !isEqual(value, o.value),
+                    'bg-innovasive-ui-options-selected hover:bg-innovasive-ui-options-selected': isEqual(value, o.value),
+                    'hover:bg-innovasive-ui-options-hover': !isEqual(value, o.value),
                   })}
                 >
-                  <span className="text-body">{o.value}</span>
+                  <span className={classnames({ 'inno-options-small': textSize === 'small', 'inno-options-default': textSize !== 'small' })}>
+                    {o.value}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
         )}
       </div>
-      {isError && !disabled && <p className="text-error text-innovasive-ui-error mt-4">{error}</p>}
+      {isError && !disabled && <p className="inno-label text-innovasive-ui-error mt-8 leading-3">{error}</p>}
     </div>
   )
 }

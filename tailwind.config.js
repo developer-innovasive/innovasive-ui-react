@@ -13,11 +13,17 @@ module.exports = {
       black: '#191D3C',
 
       'innovasive-ui': {
-        primary: '#0010F7',
-
+        label: 'black',
+        border: '#E2E1E6',
+        placeholder: 'grey',
         error: '#DA0000',
-        'disabled-light': '#F8F8F8',
-        'disabled-dark': '#E2E1E6',
+        'disabled-bg': '#F8F8F8',
+        'disabled-border': '#E2E1E6',
+        'options-hover': '#F8F8F8',
+        'options-selected': '#E2E1E6',
+        'table-header-bg': '#F1F1F2',
+
+        primary: '#0010F7',
 
         grey: '#898D9E',
         'grey-medium': '#E2E1E6',
@@ -129,4 +135,4 @@ module.exports = {
       '1280': '1280px',
     },
   },
-};
+}

@@ -27,7 +27,7 @@
 
   .sub-heading1 {
     font-size: 0.875rem;
-    @apply text-innovasive-ui-grey font-innovasive-ui-label font-medium;
+    @apply font-innovasive-ui-label font-medium;
   }
 
   .sub-heading2 {
@@ -46,5 +46,17 @@
   .caption3 {
     font-size: 0.5rem;
     @apply font-innovasive-ui-label font-medium text-xs;
+  }
+  .inno-label {
+    @apply sub-heading1;
+  }
+  .inno-placeholder {
+    @apply caption1;
+  }
+  .inno-options-small {
+    @apply caption1;
+  }
+  .inno-options-default {
+    @apply text-body;
   }
 }
