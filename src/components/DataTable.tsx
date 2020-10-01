@@ -9,13 +9,13 @@ export const DataTable = (options: TableOptions<any>) => {
 
   return (
     <div>
-      <div className="rounded-lg overflow-hidden border-l border-r border-innovasive-ui-grey-light">
+      <div className="rounded-lg overflow-hidden border border-innovasive-ui-border shadow-sm">
         <table {...getTableProps()} className="w-full">
-          <thead className="h-48 bg-innovasive-ui-table-header-bg">
+          <thead className="bg-innovasive-ui-table-header-bg">
             {headerGroups.map(headerGroup => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map(column => (
-                  <td className="sub-heading1 py-16 text-left px-24">{column.render('Header')}</td>
+                  <td className={column.headerClassName}>{column.render('Header')}</td>
                 ))}
               </tr>
             ))}
@@ -25,11 +25,9 @@ export const DataTable = (options: TableOptions<any>) => {
               prepareRow(row)
 
               return (
-                <tr {...row.getRowProps()} className="border-b border-innovasive-ui-grey-light hover:bg-innovasive-ui-grey-light">
+                <tr {...row.getRowProps()}>
                   {row.cells.map(cell => (
-                    <td {...cell.getCellProps()} className="text-body py-16 px-24">
-                      {cell.render('Cell')}
-                    </td>
+                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                   ))}
                 </tr>
               )
@@ -45,8 +43,8 @@ export const DataTable = (options: TableOptions<any>) => {
           marginPagesDisplayed={1}
           onPageChange={item => gotoPage(item.selected)}
           previousLabel={
-            <div className="flex items-center cursor-pointer border-r border-innovasive-ui-grey-medium pr-8">
-              <div className="text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-grey-light transition-all duration-300">
+            <div className="flex items-center cursor-pointer border-r  border-innovasive-ui-border pr-8">
+              <div className="text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-paginate-hover transition-all duration-300">
                 <svg className="mr-8" width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M3.66568 6.66389L3.88906 6.44206C3.95882 6.37225 3.99725 6.27936 3.99725 6.18009C3.99725 6.08088 3.95882 5.98788 3.88906 5.91807L1.35846 3.38758L3.89187 0.854177C3.96162 0.784473 4 0.691479 4 0.592264C4 0.493049 3.96162 0.4 3.89187 0.330241L3.66987 0.108355C3.52551 -0.0361184 3.29035 -0.0361184 3.14599 0.108355L0.118817 3.12468C0.0491127 3.19438 9.47276e-08 3.28727 9.03523e-08 3.38736L9.03017e-08 3.38852C8.59625e-08 3.48779 0.0491677 3.58067 0.118817 3.65038L3.13778 6.66389C3.20749 6.73371 3.30318 6.77203 3.40239 6.77214C3.50167 6.77214 3.59604 6.73371 3.66568 6.66389Z"
@@ -58,8 +56,8 @@ export const DataTable = (options: TableOptions<any>) => {
             </div>
           }
           nextLabel={
-            <div className="flex items-center cursor-pointer border-l border-innovasive-ui-grey-medium pl-8">
-              <div className="text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-grey-light active:bg-innovasive-ui-grey-medium transition-all duration-300">
+            <div className="flex items-center cursor-pointer border-l border-innovasive-ui-border pl-8">
+              <div className="text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-paginate-hover active:bg-innovasive-ui-paginate-hover transition-all duration-300">
                 NEXT
                 <svg className="ml-8" width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -73,9 +71,9 @@ export const DataTable = (options: TableOptions<any>) => {
           previousLinkClassName="focus:outline-none"
           nextLinkClassName="focus:outline-none"
           containerClassName="flex space-x-8 bg-white shadow items-center h-40 px-24"
-          activeClassName="bg-innovasive-ui-primary rounded"
-          activeLinkClassName="p-4 min-w-24 h-24 text-white rounded flex justify-center items-center text-sm font-bold bg-innovasive-ui-primary hover:bg-innovasive-ui-primary"
-          pageClassName="rounded hover:bg-innovasive-ui-grey-light transition-all duration-300"
+          activeClassName="bg-innovasive-ui-paginate-selected rounded"
+          activeLinkClassName="p-4 min-w-24 h-24 text-white rounded flex justify-center items-center text-sm font-bold bg-innovasive-ui-paginate-selected hover:bg-innovasive-ui-paginate-selected"
+          pageClassName="rounded hover:bg-innovasive-ui-paginate-hover transition-all duration-300"
           pageLinkClassName="p-4 min-w-24 h-24 rounded flex justify-center items-center text-sm font-bold focus:outline-none"
         />
       </div>

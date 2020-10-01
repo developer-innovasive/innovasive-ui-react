@@ -14,7 +14,7 @@ module.exports = {
 
       'innovasive-ui': {
         label: 'black',
-        border: '#E2E1E6',
+        border: '#F8F8F8',
         placeholder: 'grey',
         error: '#DA0000',
         'disabled-bg': '#F8F8F8',
@@ -22,13 +22,8 @@ module.exports = {
         'options-hover': '#F8F8F8',
         'options-selected': '#E2E1E6',
         'table-header-bg': '#F1F1F2',
-
-        primary: '#0010F7',
-
-        grey: '#898D9E',
-        'grey-medium': '#E2E1E6',
-        'grey-medium-light': '#F1F1F2',
-        'grey-light': '#F8F8F8',
+        'paginate-selected': '#0010F7',
+        'paginate-hover': '#F8F8F8',
       },
     },
     fontFamily: {

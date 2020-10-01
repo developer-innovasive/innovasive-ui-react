@@ -51,6 +51,14 @@ import {
 declare module 'react-table' {
   // take this file as-is, or comment out the sections that don't apply to your plugin configuration
 
+  export interface UseTableHeaderGroupProps<D extends object> {
+    headers: Array<HeaderGroup<D>>
+    getHeaderGroupProps: (propGetter?: HeaderGroupPropGetter<D>) => TableHeaderProps
+    getFooterGroupProps: (propGetter?: FooterGroupPropGetter<D>) => TableFooterProps
+    totalHeaderCount: number // not documented
+    headerClassName: string
+  }
+
   export interface TableOptions<D extends Record<string, unknown>>
     extends UseExpandedOptions<D>,
       UseFiltersOptions<D>,
