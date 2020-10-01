@@ -5,10 +5,12 @@ declare type SelectOption = {
 };
 export declare type SelectProps = {
     label?: string;
+    placeholder?: string;
     value: string;
     options: SelectOption[];
     disabled: boolean;
     error?: string;
+    textSize?: 'small' | 'default';
     onChange?: (value: any) => void;
 };
 export declare const Select: FC<SelectProps>;

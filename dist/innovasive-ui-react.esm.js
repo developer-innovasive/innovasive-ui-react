@@ -18,12 +18,12 @@ var TextInput = function TextInput(_ref) {
       _onChange = _ref.onChange,
       _onKeyPress = _ref.onKeyPress;
   return React.createElement("div", null, React.createElement("div", {
-    className: "mb-8 label text-body"
+    className: "mb-8 leading-3 inno-label text-innovasive-ui-label"
   }, label), React.createElement("input", {
     ref: innerRef,
     type: type || 'text',
     disabled: disabled,
-    className: "w-full border text-body " + (disabled ? 'bg-innovasive-ui-disabled-light border-innovasive-ui-disabled-dark cursor-not-allowed' : 'bg-white') + " " + (error ? 'border-innovasive-ui-error' : 'focus:border-black ') + "  outline-none h-48 px-24 transition-all duration-200 ease-in-out placeholder",
+    className: "w-full border inno-placeholder " + (disabled ? 'bg-innovasive-ui-disabled-bg border-innovasive-ui-disabled-border cursor-not-allowed' : 'bg-white border-innovasive-ui-border') + " " + (error ? 'border-innovasive-ui-error' : 'focus:border-black ') + "  outline-none h-40 px-24 transition-all duration-200 ease-in-out placeholder text-innovasive-ui-placeholder",
     style: {
       borderRadius: '3px'
     },
@@ -36,7 +36,7 @@ var TextInput = function TextInput(_ref) {
       return _onKeyPress && _onKeyPress(e);
     }
   }), React.createElement("div", {
-    className: "mt-8 text-innovasive-ui-error transform text-body " + (error ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-16') + " transition-all h-24 duration-500 ease-in-out"
+    className: "mt-8 leading-3 text-innovasive-ui-error transform inno-label " + (error ? 'opacity-1 00 translate-y-0' : 'opacity-0 -translate-y-16') + " transition-all h-24 duration-500 ease-in-out"
   }, error));
 };
 var TextInputFormik = function TextInputFormik(props) {
@@ -76,7 +76,10 @@ var Select = function Select(_ref) {
       options = _ref.options,
       disabled = _ref.disabled,
       error = _ref.error,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      placeholder = _ref.placeholder,
+      _ref$textSize = _ref.textSize,
+      textSize = _ref$textSize === void 0 ? 'default' : _ref$textSize;
   var ref = useRef();
   useOnClickOutside(ref, function () {
     return setIsOpen(false);
@@ -101,34 +104,35 @@ var Select = function Select(_ref) {
   return React.createElement("div", {
     className: "h-72"
   }, React.createElement("div", {
+    className: "mb-8 leading-3 inno-label text-innovasive-ui-label"
+  }, label), React.createElement("div", {
     ref: ref,
     className: classnames('relative', {
       'bg-white': !disabled,
-      'bg-innovasive-ui-disabled-light': disabled
+      'bg-innovasive-ui-disabled-bg': disabled
     })
   }, React.createElement("button", {
     disabled: disabled,
     onClick: handleOnClick,
     type: "button",
     className: classnames('rounded border w-full h-40 px-24 focus:outline-none', {
-      'cursor-not-allowed border-innovasive-ui-disabled-light': disabled,
-      'border-innovasive-ui-grey-medium': !isError,
+      'cursor-not-allowed border-innovasive-ui-disabled-border': disabled,
+      'border-innovasive-ui-border': !isError,
       'border-innovasive-ui-error': isError
     })
   }, React.createElement("div", {
     className: "flex items-center"
   }, React.createElement("span", {
-    className: classnames('text-body', {
-      'text-innovasive-ui-grey': isNoValue,
-      'text-innovasive-ui-black': !isNoValue || !disabled,
-      'text-innovasive-ui-grey-medium': disabled
-    })
-  }, isNoValue ? label : value)), React.createElement("span", {
+    className: classnames({
+      'inno-options-small': textSize === 'small',
+      'inno-options-default': textSize !== 'small'
+    }, 'text-innovasive-ui-placeholder')
+  }, isNoValue ? placeholder : value)), React.createElement("span", {
     className: "absolute inset-y-0 right-0 flex items-center pr-24 pointer-events-none"
   }, React.createElement("svg", {
     className: classnames('fill-current', {
-      'text-innovasive-ui-grey': !disabled,
-      'text-innovasive-ui-disabled-dark': disabled
+      'text-innovasive-ui-placeholder': !disabled,
+      'text-innovasive-ui-disabled-border': disabled
     }),
     width: "11",
     height: "7",
@@ -138,7 +142,7 @@ var Select = function Select(_ref) {
   }, React.createElement("path", {
     d: "M10.2458 0.290792C10.0584 0.104542 9.80498 0 9.5408 0C9.27661 0 9.02316 0.104542 8.8358 0.290792L5.2458 3.83079L1.7058 0.290792C1.51844 0.104542 1.26498 0 1.0008 0C0.736612 0 0.483161 0.104542 0.295798 0.290792C0.20207 0.383755 0.127675 0.494356 0.0769067 0.616216C0.026138 0.738075 0 0.868781 0 1.00079C0 1.1328 0.026138 1.26351 0.0769067 1.38537C0.127675 1.50723 0.20207 1.61783 0.295798 1.71079L4.5358 5.95079C4.62876 6.04452 4.73936 6.11891 4.86122 6.16968C4.98308 6.22045 5.11379 6.24659 5.2458 6.24659C5.37781 6.24659 5.50852 6.22045 5.63037 6.16968C5.75223 6.11891 5.86283 6.04452 5.9558 5.95079L10.2458 1.71079C10.3395 1.61783 10.4139 1.50723 10.4647 1.38537C10.5155 1.26351 10.5416 1.1328 10.5416 1.00079C10.5416 0.868781 10.5155 0.738075 10.4647 0.616216C10.4139 0.494356 10.3395 0.383755 10.2458 0.290792Z"
   })))), isOpen && React.createElement("div", {
-    className: "absolute w-full max-h-160 overflow-y-scroll mt-4 border border-innovasive-ui-grey-medium rounded shadow-md overflow-hidden bg-white"
+    className: "absolute w-full max-h-160 overflow-y-scroll mt-4 border border-innovasive-ui-border rounded shadow-md overflow-hidden bg-white"
   }, React.createElement("ul", null, options == null ? void 0 : options.map(function (o) {
     return React.createElement("li", {
       key: o.id,
@@ -146,14 +150,17 @@ var Select = function Select(_ref) {
         return handleOnSelect(o.value);
       },
       className: classnames('h-40 flex items-center px-24 cursor-pointer bg-white', {
-        'bg-innovasive-ui-grey-medium hover:bg-innovasive-ui-grey-medium': isEqual(value, o.value),
-        'hover:bg-innovasive-ui-grey-light': !isEqual(value, o.value)
+        'bg-innovasive-ui-options-selected hover:bg-innovasive-ui-options-selected': isEqual(value, o.value),
+        'hover:bg-innovasive-ui-options-hover': !isEqual(value, o.value)
       })
     }, React.createElement("span", {
-      className: "text-body"
+      className: classnames({
+        'inno-options-small': textSize === 'small',
+        'inno-options-default': textSize !== 'small'
+      })
     }, o.value));
   })))), isError && !disabled && React.createElement("p", {
-    className: "text-error text-innovasive-ui-error mt-4"
+    className: "inno-label text-innovasive-ui-error mt-8 leading-3"
   }, error));
 };
 var SelectFormik = function SelectFormik(props) {
@@ -223,27 +230,23 @@ var DataTable = function DataTable(options) {
       page = tableInstance.page,
       gotoPage = tableInstance.gotoPage;
   return React.createElement("div", null, React.createElement("div", {
-    className: "rounded-lg overflow-hidden border-l border-r border-innovasive-ui-grey-light"
+    className: "rounded-lg overflow-hidden border border-innovasive-ui-border shadow-sm"
   }, React.createElement("table", Object.assign({}, getTableProps(), {
     className: "w-full"
   }), React.createElement("thead", {
-    className: "h-48 bg-innovasive-ui-grey-light"
+    className: "bg-innovasive-ui-table-header-bg"
   }, headerGroups.map(function (headerGroup) {
     return React.createElement("tr", Object.assign({}, headerGroup.getHeaderGroupProps()), headerGroup.headers.map(function (column) {
       return React.createElement("td", {
-        className: "sub-heading1 py-16 text-left px-24"
+        className: column.headerClassName
       }, column.render('Header'));
     }));
   })), React.createElement("tbody", Object.assign({}, getTableBodyProps(), {
     className: "bg-white"
   }), page.map(function (row) {
     prepareRow(row);
-    return React.createElement("tr", Object.assign({}, row.getRowProps(), {
-      className: "border-b border-innovasive-ui-grey-light hover:bg-innovasive-ui-grey-light"
-    }), row.cells.map(function (cell) {
-      return React.createElement("td", Object.assign({}, cell.getCellProps(), {
-        className: "text-body py-16 px-24"
-      }), cell.render('Cell'));
+    return React.createElement("tr", Object.assign({}, row.getRowProps()), row.cells.map(function (cell) {
+      return React.createElement("td", Object.assign({}, cell.getCellProps()), cell.render('Cell'));
     }));
   })))), React.createElement("div", {
     className: "mt-16 flex items-center justify-center"
@@ -255,9 +258,9 @@ var DataTable = function DataTable(options) {
       return gotoPage(item.selected);
     },
     previousLabel: React.createElement("div", {
-      className: "flex items-center cursor-pointer border-r border-innovasive-ui-grey-medium pr-8"
+      className: "flex items-center cursor-pointer border-r  border-innovasive-ui-border pr-8"
     }, React.createElement("div", {
-      className: "text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-grey-light transition-all duration-300"
+      className: "text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-paginate-hover transition-all duration-300"
     }, React.createElement("svg", {
       className: "mr-8",
       width: "4",
@@ -270,9 +273,9 @@ var DataTable = function DataTable(options) {
       fill: "#191D3C"
     })), "PREV")),
     nextLabel: React.createElement("div", {
-      className: "flex items-center cursor-pointer border-l border-innovasive-ui-grey-medium pl-8"
+      className: "flex items-center cursor-pointer border-l border-innovasive-ui-border pl-8"
     }, React.createElement("div", {
-      className: "text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-grey-light active:bg-innovasive-ui-grey-medium transition-all duration-300"
+      className: "text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-paginate-hover active:bg-innovasive-ui-paginate-hover transition-all duration-300"
     }, "NEXT", React.createElement("svg", {
       className: "ml-8",
       width: "4",
@@ -287,9 +290,9 @@ var DataTable = function DataTable(options) {
     previousLinkClassName: "focus:outline-none",
     nextLinkClassName: "focus:outline-none",
     containerClassName: "flex space-x-8 bg-white shadow items-center h-40 px-24",
-    activeClassName: "bg-innovasive-ui-primary rounded",
-    activeLinkClassName: "p-4 min-w-24 h-24 text-white rounded flex justify-center items-center text-sm font-bold bg-innovasive-ui-primary hover:bg-innovasive-ui-primary",
-    pageClassName: "rounded hover:bg-innovasive-ui-grey-light transition-all duration-300",
+    activeClassName: "bg-innovasive-ui-paginate-selected rounded",
+    activeLinkClassName: "p-4 min-w-24 h-24 text-white rounded flex justify-center items-center text-sm font-bold bg-innovasive-ui-paginate-selected hover:bg-innovasive-ui-paginate-selected",
+    pageClassName: "rounded hover:bg-innovasive-ui-paginate-hover transition-all duration-300",
     pageLinkClassName: "p-4 min-w-24 h-24 rounded flex justify-center items-center text-sm font-bold focus:outline-none"
   })));
 };
