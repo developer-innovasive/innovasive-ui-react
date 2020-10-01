@@ -107,18 +107,17 @@ var Select = function Select(_ref) {
     className: "mb-8 leading-3 inno-label text-innovasive-ui-label"
   }, label), React.createElement("div", {
     ref: ref,
-    className: classnames('relative', {
-      'bg-white': !disabled,
-      'bg-innovasive-ui-disabled-bg': disabled
-    })
+    className: classnames('relative')
   }, React.createElement("button", {
     disabled: disabled,
     onClick: handleOnClick,
     type: "button",
-    className: classnames('rounded border w-full h-40 px-24 focus:outline-none', {
+    className: classnames('rounded border w-full h-40 pl-24 focus:outline-none', {
       'cursor-not-allowed border-innovasive-ui-disabled-border': disabled,
       'border-innovasive-ui-border': !isError,
-      'border-innovasive-ui-error': isError
+      'border-innovasive-ui-error': isError,
+      'bg-white': !disabled,
+      'bg-innovasive-ui-disabled-bg': disabled
     })
   }, React.createElement("div", {
     className: "flex items-center"
@@ -245,7 +244,9 @@ var DataTable = function DataTable(options) {
     className: "bg-white"
   }), page.map(function (row) {
     prepareRow(row);
-    return React.createElement("tr", Object.assign({}, row.getRowProps()), row.cells.map(function (cell) {
+    return React.createElement("tr", Object.assign({}, row.getRowProps(), {
+      className: "border-b border-innovasive-ui-border"
+    }), row.cells.map(function (cell) {
       return React.createElement("td", Object.assign({}, cell.getCellProps()), cell.render('Cell'));
     }));
   })))), React.createElement("div", {

@@ -41,21 +41,17 @@ export const Select: FC<SelectProps> = ({ label, value, options, disabled, error
   return (
     <div className="h-72">
       <div className="mb-8 leading-3 inno-label text-innovasive-ui-label">{label}</div>
-      <div
-        ref={ref}
-        className={classnames('relative', {
-          'bg-white': !disabled,
-          'bg-innovasive-ui-disabled-bg': disabled,
-        })}
-      >
+      <div ref={ref} className={classnames('relative')}>
         <button
           disabled={disabled}
           onClick={handleOnClick}
           type="button"
-          className={classnames('rounded border w-full h-40 px-24 focus:outline-none', {
+          className={classnames('rounded border w-full h-40 pl-24 focus:outline-none', {
             'cursor-not-allowed border-innovasive-ui-disabled-border': disabled,
             'border-innovasive-ui-border': !isError,
             'border-innovasive-ui-error': isError,
+            'bg-white': !disabled,
+            'bg-innovasive-ui-disabled-bg': disabled,
           })}
         >
           <div className="flex items-center">

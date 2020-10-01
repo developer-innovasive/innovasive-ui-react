@@ -25,7 +25,7 @@ export const DataTable = (options: TableOptions<any>) => {
               prepareRow(row)
 
               return (
-                <tr {...row.getRowProps()}>
+                <tr {...row.getRowProps()} className="border-b border-innovasive-ui-border">
                   {row.cells.map(cell => (
                     <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                   ))}
