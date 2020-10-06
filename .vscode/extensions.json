@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "amatiasq.sort-imports",
+    "esbenp.prettier-vscode",
+    "pucelle.run-on-save",
+    "bradlc.vscode-tailwindcss",
+    "dsznajder.es7-react-js-snippets",
+    "aaron-bond.better-comments",
+    "heybourn.headwind"
+  ]
+}

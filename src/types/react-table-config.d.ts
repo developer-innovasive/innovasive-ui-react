@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import {
   UseColumnOrderInstanceProps,
   UseColumnOrderState,
@@ -49,14 +50,20 @@ import {
 } from 'react-table'
 
 declare module 'react-table' {
-  // take this file as-is, or comment out the sections that don't apply to your plugin configuration
-
-  export interface UseTableHeaderGroupProps<D extends object> {
-    headers: Array<HeaderGroup<D>>
-    getHeaderGroupProps: (propGetter?: HeaderGroupPropGetter<D>) => TableHeaderProps
-    getFooterGroupProps: (propGetter?: FooterGroupPropGetter<D>) => TableFooterProps
-    totalHeaderCount: number // not documented
-    headerClassName: string
+  export interface TableOverrides<D extends object> {
+    classNames: {
+      header?: string
+      row?: string
+      cell?: string
+    }
+    overrides: {
+      header?: string
+      row?: string
+      cell?: string
+    }
+    components: {
+      empty?: ReactNode
+    }
   }
 
   export interface TableOptions<D extends Record<string, unknown>>
@@ -69,9 +76,7 @@ declare module 'react-table' {
       UseRowSelectOptions<D>,
       UseRowStateOptions<D>,
       UseSortByOptions<D>,
-      // note that having Record here allows you to add anything to the options, this matches the spirit of the
-      // underlying js library, but might be cleaner if it's replaced by a more specific type that matches your
-      // feature set, this is a safe default.
+      TableOverrides<D>,
       Record<string, any> {}
 
   export interface Hooks<D extends Record<string, unknown> = Record<string, unknown>>

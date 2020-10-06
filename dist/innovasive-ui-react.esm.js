@@ -1,54 +1,61 @@
-import { Field } from 'formik';
-import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
-import { isEmpty, isEqual } from 'lodash-es';
+import React, { useEffect, useRef, useState } from 'react';
+import { Field } from 'formik';
+import { isEmpty, isEqual, filter } from 'lodash-es';
 import ReactPaginate from 'react-paginate';
 import { useTable, usePagination } from 'react-table';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
 var TextInput = function TextInput(_ref) {
-  var label = _ref.label,
-      placeholder = _ref.placeholder,
-      error = _ref.error,
-      disabled = _ref.disabled,
-      _ref$value = _ref.value,
-      value = _ref$value === void 0 ? '' : _ref$value,
-      _ref$type = _ref.type,
-      type = _ref$type === void 0 ? 'text' : _ref$type,
-      innerRef = _ref.innerRef,
-      _onChange = _ref.onChange,
-      _onKeyPress = _ref.onKeyPress;
+  var _form$errors$fields$n, _classnames, _classnames2;
+
+  var _ref$label = _ref.label,
+      label = _ref$label === void 0 ? '' : _ref$label,
+      $error = _ref.error,
+      fields = _extends({}, _ref.field),
+      form = _ref.form,
+      restProps = _objectWithoutPropertiesLoose(_ref, ["label", "error", "field", "form"]);
+
+  var error = (_form$errors$fields$n = form == null ? void 0 : form.errors[fields.name]) != null ? _form$errors$fields$n : $error;
   return React.createElement("div", null, React.createElement("div", {
     className: "mb-8 leading-3 inno-label text-innovasive-ui-label"
-  }, label), React.createElement("input", {
-    ref: innerRef,
-    type: type || 'text',
-    disabled: disabled,
-    className: "w-full border inno-placeholder " + (disabled ? 'bg-innovasive-ui-disabled-bg border-innovasive-ui-disabled-border cursor-not-allowed' : 'bg-white border-innovasive-ui-border') + " " + (error ? 'border-innovasive-ui-error' : 'focus:border-black ') + "  outline-none h-40 px-24 transition-all duration-200 ease-in-out placeholder text-innovasive-ui-placeholder",
-    style: {
-      borderRadius: '3px'
-    },
-    placeholder: placeholder,
-    value: value,
-    onChange: function onChange(e) {
-      return _onChange && _onChange(e);
-    },
-    onKeyPress: function onKeyPress(e) {
-      return _onKeyPress && _onKeyPress(e);
-    }
-  }), React.createElement("div", {
-    className: "mt-8 leading-3 text-innovasive-ui-error transform inno-label " + (error ? 'opacity-1 00 translate-y-0' : 'opacity-0 -translate-y-16') + " transition-all h-24 duration-500 ease-in-out"
+  }, label), React.createElement("input", Object.assign({
+    className: classnames((_classnames = {}, _classnames["w-full border inno-placeholder rounded-3 outline-none  h-40 px-24 transition-all duration-200 ease-in-out placeholder text-innovasive-ui-placeholder innovasive-ui-value disabled:cursor-not-allowed disabled:bg-innovasive-ui-disabled"] = true, _classnames["bg-innovasive-ui-disabled-bg border-innovasive-ui-disabled-border border-innovasive-ui-error"] = error, _classnames["bg-white border-innovasive-ui-border focus:border-black"] = !error, _classnames))
+  }, restProps, fields)), React.createElement("div", {
+    className: classnames((_classnames2 = {}, _classnames2["mt-8 leading-3 text-innovasive-ui-error transform inno-label transition-all h-24 duration-500 ease-in-out"] = true, _classnames2["opacity-1 00 translate-y-0"] = error, _classnames2["opacity-0 -translate-y-16"] = !error, _classnames2))
   }, error));
-};
-var TextInputFormik = function TextInputFormik(props) {
-  return React.createElement(Field, {
-    name: props.name
-  }, function (_ref2) {
-    var field = _ref2.field,
-        meta = _ref2.meta;
-    return React.createElement(TextInput, Object.assign({}, field, {
-      error: meta.error
-    }, props));
-  });
 };
 
 function useOnClickOutside(ref, handler) {
@@ -112,7 +119,7 @@ var Select = function Select(_ref) {
     disabled: disabled,
     onClick: handleOnClick,
     type: "button",
-    className: classnames('rounded border w-full h-40 pl-24 focus:outline-none', {
+    className: classnames('rounded-3 border w-full h-40 pl-24 focus:outline-none', {
       'cursor-not-allowed border-innovasive-ui-disabled-border': disabled,
       'border-innovasive-ui-border': !isError,
       'border-innovasive-ui-error': isError,
@@ -141,7 +148,7 @@ var Select = function Select(_ref) {
   }, React.createElement("path", {
     d: "M10.2458 0.290792C10.0584 0.104542 9.80498 0 9.5408 0C9.27661 0 9.02316 0.104542 8.8358 0.290792L5.2458 3.83079L1.7058 0.290792C1.51844 0.104542 1.26498 0 1.0008 0C0.736612 0 0.483161 0.104542 0.295798 0.290792C0.20207 0.383755 0.127675 0.494356 0.0769067 0.616216C0.026138 0.738075 0 0.868781 0 1.00079C0 1.1328 0.026138 1.26351 0.0769067 1.38537C0.127675 1.50723 0.20207 1.61783 0.295798 1.71079L4.5358 5.95079C4.62876 6.04452 4.73936 6.11891 4.86122 6.16968C4.98308 6.22045 5.11379 6.24659 5.2458 6.24659C5.37781 6.24659 5.50852 6.22045 5.63037 6.16968C5.75223 6.11891 5.86283 6.04452 5.9558 5.95079L10.2458 1.71079C10.3395 1.61783 10.4139 1.50723 10.4647 1.38537C10.5155 1.26351 10.5416 1.1328 10.5416 1.00079C10.5416 0.868781 10.5155 0.738075 10.4647 0.616216C10.4139 0.494356 10.3395 0.383755 10.2458 0.290792Z"
   })))), isOpen && React.createElement("div", {
-    className: "absolute w-full max-h-160 overflow-y-scroll mt-4 border border-innovasive-ui-border rounded shadow-md overflow-hidden bg-white"
+    className: "absolute w-full max-h-160 overflow-y-scroll mt-4 border border-innovasive-ui-border rounded-3 shadow-md overflow-hidden bg-white"
   }, React.createElement("ul", null, options == null ? void 0 : options.map(function (o) {
     return React.createElement("li", {
       key: o.id,
@@ -174,52 +181,104 @@ var SelectFormik = function SelectFormik(props) {
   });
 };
 
-var Button = function Button(_ref) {
-  var _ref$color = _ref.color,
-      color = _ref$color === void 0 ? '#0010F7' : _ref$color,
-      children = _ref.children,
+var ButtonBase = function ButtonBase(_ref) {
+  var id = _ref.id,
+      _ref$disabled = _ref.disabled,
+      disabled = _ref$disabled === void 0 ? false : _ref$disabled,
+      className = _ref.className,
       onClick = _ref.onClick,
-      _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 'Primary' : _ref$size;
-  var hoverRef = useRef(null);
-
-  function hoverHandler(state) {
-    var _hoverRef$current;
-
-    var style = (_hoverRef$current = hoverRef.current) == null ? void 0 : _hoverRef$current.style;
-
-    if (state && style) {
-      style.opacity = '0.15';
-    } else if (!state && style) {
-      style.opacity = '0';
-    }
-  }
-
-  return React.createElement("div", {
+      _ref$children = _ref.children,
+      children = _ref$children === void 0 ? function () {
+    return React.createElement("div", null);
+  } : _ref$children;
+  return React.createElement("button", {
+    id: id,
     onClick: onClick,
-    className: classnames('relative flex justify-center items-center cursor-pointer overflow-hidden select-none', size === 'Primary' ? 'h-40' : 'h-32'),
-    onMouseOver: function onMouseOver() {
-      return hoverHandler(true);
-    },
-    onMouseLeave: function onMouseLeave() {
-      return hoverHandler(false);
-    },
-    style: {
-      backgroundColor: color,
-      borderRadius: '3px'
-    }
-  }, React.createElement("div", {
-    ref: hoverRef,
-    style: {
-      opacity: 0
-    },
-    className: "absolute w-full h-full bg-black transition-all duration-200 ease-in-out"
-  }), React.createElement("div", {
-    className: "z-50"
-  }, children));
+    disabled: disabled,
+    className: className
+  }, children({
+    disabled: disabled
+  }));
 };
 
+var ButtonPrimary = function ButtonPrimary(_ref) {
+  var _classnames;
+
+  var id = _ref.id,
+      title = _ref.title,
+      disabled = _ref.disabled,
+      onClick = _ref.onClick;
+  return React.createElement(ButtonBase, {
+    id: id,
+    disabled: disabled,
+    onClick: onClick,
+    className: classnames((_classnames = {}, _classnames["w-full relative flex justify-center items-center rounded-3 group overflow-hidden focus:outline-none"] = 'default', _classnames['cursor-pointer active:brightness-80'] = !disabled, _classnames['disabled:cursor-not-allowed'] = disabled, _classnames))
+  }, function () {
+    var _classnames2, _classnames3;
+
+    return React.createElement(React.Fragment, null, React.createElement("div", {
+      className: "z-10 absolute"
+    }, React.createElement("p", {
+      className: classnames((_classnames2 = {}, _classnames2['text-white heading2'] = !disabled, _classnames2['text-innovasive-ui-disabled-dark heading2'] = disabled, _classnames2))
+    }, title)), React.createElement("div", {
+      className: classnames('w-full h-40', (_classnames3 = {}, _classnames3['w-full h-32 transition-all duration-200 ease-in-out'] = 'default', _classnames3['group-hover:brightness-95 bg-innovasive-ui-primary'] = !disabled, _classnames3['bg-innovasive-ui-disabled'] = disabled, _classnames3))
+    }));
+  });
+};
+
+var ButtonSecondary = function ButtonSecondary(_ref) {
+  var _classnames;
+
+  var id = _ref.id,
+      title = _ref.title,
+      disabled = _ref.disabled,
+      onClick = _ref.onClick;
+  return React.createElement(ButtonBase, {
+    id: id,
+    disabled: disabled,
+    onClick: onClick,
+    className: classnames((_classnames = {}, _classnames["w-full relative flex justify-center items-center rounded-3 group overflow-hidden focus:outline-none"] = 'default', _classnames['cursor-pointer active:brightness-80'] = !disabled, _classnames['disabled:cursor-not-allowed'] = disabled, _classnames))
+  }, function () {
+    var _classnames2, _classnames3;
+
+    return React.createElement(React.Fragment, null, React.createElement("div", {
+      className: "z-10 absolute"
+    }, React.createElement("p", {
+      className: classnames((_classnames2 = {}, _classnames2['text-white heading2'] = !disabled, _classnames2['text-innovasive-ui-disabled-dark heading2'] = disabled, _classnames2))
+    }, title)), React.createElement("div", {
+      className: classnames((_classnames3 = {}, _classnames3['w-full h-32 transition-all duration-200 ease-in-out'] = 'default', _classnames3['group-hover:brightness-95 bg-innovasive-ui-secondary'] = !disabled, _classnames3['bg-innovasive-ui-disabled'] = disabled, _classnames3))
+    }));
+  });
+};
+
+var ButtonIcon = function ButtonIcon(props) {
+  var _classnames;
+
+  return React.createElement("button", {
+    disabled: props.disabled,
+    onClick: props.onClick,
+    className: classnames((_classnames = {}, _classnames["w-40 h-40 p-8 flex justify-center items-center rounded-full transition-all duration-200 ease-in-out focus:outline-none"] = true, _classnames["cursor-not-allowed text-innovasive-ui-placeholder bg-innovasive-ui-disabled"] = props.disabled, _classnames["hover:bg-innovasive-ui-hover active:bg-innovasive-ui-active"] = !props.disabled, _classnames))
+  }, props.children);
+};
+
+function joinClassNames(classes) {
+  return filter(classes).join(' ');
+}
+
+/**
+|--------------------------------------------------
+| MAIN COMPONENT
+|--------------------------------------------------
+*/
+
 var DataTable = function DataTable(options) {
+  var _options$overrides, _options$overrides2, _options$overrides3, _options$components, _options$classNames, _options$classNames2, _options$classNames3, _headerGroups$, _headerGroups$$header;
+
+  /**
+  |--------------------------------------------------
+  | REACT-TABLE HOOK
+  |--------------------------------------------------
+  */
   var tableInstance = useTable(options, usePagination);
   var getTableProps = tableInstance.getTableProps,
       getTableBodyProps = tableInstance.getTableBodyProps,
@@ -228,28 +287,77 @@ var DataTable = function DataTable(options) {
       pageCount = tableInstance.pageCount,
       page = tableInstance.page,
       gotoPage = tableInstance.gotoPage;
+  /**
+  |--------------------------------------------------
+  | OVERRIDE CLASSES
+  |--------------------------------------------------
+  */
+
+  var headerOverride = (_options$overrides = options.overrides) == null ? void 0 : _options$overrides.header;
+  var rowOverride = (_options$overrides2 = options.overrides) == null ? void 0 : _options$overrides2.row;
+  var cellOverride = (_options$overrides3 = options.overrides) == null ? void 0 : _options$overrides3.cell;
+  /**
+  |--------------------------------------------------
+  | OVERRIDE COMPONENTS
+  |--------------------------------------------------
+  */
+
+  var emptyComponent = (_options$components = options.components) == null ? void 0 : _options$components.empty;
+  /**
+  |--------------------------------------------------
+  | EXTENDED CLASSES
+  |--------------------------------------------------
+  */
+
+  var headerClass = (_options$classNames = options.classNames) == null ? void 0 : _options$classNames.header;
+  var rowClass = (_options$classNames2 = options.classNames) == null ? void 0 : _options$classNames2.row;
+  var cellClass = (_options$classNames3 = options.classNames) == null ? void 0 : _options$classNames3.cell;
+  /**
+  |--------------------------------------------------
+  | RENDER
+  |--------------------------------------------------
+  */
+
   return React.createElement("div", null, React.createElement("div", {
-    className: "rounded-lg overflow-hidden border border-innovasive-ui-border shadow-sm"
+    className: "rounded-t-20 rounded-b-3 overflow-hidden border border-innovasive-ui-border shadow-sm"
   }, React.createElement("table", Object.assign({}, getTableProps(), {
     className: "w-full"
   }), React.createElement("thead", {
     className: "bg-innovasive-ui-table-header-bg"
   }, headerGroups.map(function (headerGroup) {
     return React.createElement("tr", Object.assign({}, headerGroup.getHeaderGroupProps()), headerGroup.headers.map(function (column) {
+      var _classnames;
+
       return React.createElement("td", {
-        className: column.headerClassName
+        className: classnames((_classnames = {
+          headerOverride: headerOverride
+        }, _classnames[joinClassNames(['px-24 py-16', headerClass])] = !headerOverride, _classnames))
       }, column.render('Header'));
     }));
   })), React.createElement("tbody", Object.assign({}, getTableBodyProps(), {
     className: "bg-white"
-  }), page.map(function (row) {
+  }), isEmpty(page) && React.createElement("tr", null, React.createElement("td", {
+    colSpan: (_headerGroups$ = headerGroups[0]) == null ? void 0 : (_headerGroups$$header = _headerGroups$.headers) == null ? void 0 : _headerGroups$$header.length
+  }, isEmpty(emptyComponent) ? React.createElement("div", {
+    className: "h-320 flex justify-center items-center"
+  }, "No data") : emptyComponent)), page.map(function (row) {
+    var _classnames2;
+
     prepareRow(row);
     return React.createElement("tr", Object.assign({}, row.getRowProps(), {
-      className: "border-b border-innovasive-ui-border"
+      className: classnames((_classnames2 = {
+        rowOverride: rowOverride
+      }, _classnames2[joinClassNames(['border-b border-innovasive-ui-border', rowClass])] = !rowOverride, _classnames2))
     }), row.cells.map(function (cell) {
-      return React.createElement("td", Object.assign({}, cell.getCellProps()), cell.render('Cell'));
+      var _classnames3;
+
+      return React.createElement("td", Object.assign({}, cell.getCellProps(), {
+        className: classnames((_classnames3 = {
+          cellOverride: cellOverride
+        }, _classnames3[joinClassNames(['px-24 py-16', cellClass])] = !cellOverride, _classnames3))
+      }), cell.render('Cell'));
     }));
-  })))), React.createElement("div", {
+  })))), pageCount > 0 && React.createElement("div", {
     className: "mt-16 flex items-center justify-center"
   }, React.createElement(ReactPaginate, {
     pageCount: pageCount,
@@ -261,7 +369,7 @@ var DataTable = function DataTable(options) {
     previousLabel: React.createElement("div", {
       className: "flex items-center cursor-pointer border-r  border-innovasive-ui-border pr-8"
     }, React.createElement("div", {
-      className: "text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-paginate-hover transition-all duration-300"
+      className: "text-sm font-bold flex items-center justify-center rounded-3 px-8 py-2 hover:bg-innovasive-ui-paginate-hover active:bg-innovasive-ui-active transition-all duration-300"
     }, React.createElement("svg", {
       className: "mr-8",
       width: "4",
@@ -276,7 +384,7 @@ var DataTable = function DataTable(options) {
     nextLabel: React.createElement("div", {
       className: "flex items-center cursor-pointer border-l border-innovasive-ui-border pl-8"
     }, React.createElement("div", {
-      className: "text-sm font-bold flex items-center justify-center rounded px-8 py-2 hover:bg-innovasive-ui-paginate-hover active:bg-innovasive-ui-paginate-hover transition-all duration-300"
+      className: "text-sm font-bold flex items-center justify-center rounded-3 px-8 py-2 hover:bg-innovasive-ui-paginate-hover active:bg-innovasive-ui-active transition-all duration-300"
     }, "NEXT", React.createElement("svg", {
       className: "ml-8",
       width: "4",
@@ -291,12 +399,12 @@ var DataTable = function DataTable(options) {
     previousLinkClassName: "focus:outline-none",
     nextLinkClassName: "focus:outline-none",
     containerClassName: "flex space-x-8 bg-white shadow items-center h-40 px-24",
-    activeClassName: "bg-innovasive-ui-paginate-selected rounded",
-    activeLinkClassName: "p-4 min-w-24 h-24 text-white rounded flex justify-center items-center text-sm font-bold bg-innovasive-ui-paginate-selected hover:bg-innovasive-ui-paginate-selected",
-    pageClassName: "rounded hover:bg-innovasive-ui-paginate-hover transition-all duration-300",
-    pageLinkClassName: "p-4 min-w-24 h-24 rounded flex justify-center items-center text-sm font-bold focus:outline-none"
+    activeClassName: "bg-innovasive-ui-primary rounded-3",
+    activeLinkClassName: "p-4 min-w-24 h-24 text-white rounded-3 flex justify-center items-center text-sm font-bold bg-innovasive-ui-primary hover:bg-innovasive-ui-primary",
+    pageClassName: "rounded-3 hover:bg-innovasive-ui-paginate-hover transition-all duration-300 ",
+    pageLinkClassName: "p-4 min-w-24 h-24 rounded-3 flex justify-center items-center text-sm font-bold focus:outline-none active:bg-innovasive-ui-active"
   })));
 };
 
-export { Button, DataTable, Select, SelectFormik, TextInput, TextInputFormik };
+export { ButtonBase, ButtonIcon, ButtonPrimary, ButtonSecondary, DataTable, Select, SelectFormik, TextInput };
 //# sourceMappingURL=innovasive-ui-react.esm.js.map

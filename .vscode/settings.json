@@ -1,0 +1,45 @@
+{
+  ///
+  ///
+  /// VSCODE
+  ///
+  ///
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.wordWrapColumn": 150,
+  ///
+  ///
+  /// FORMATTER
+  ///
+  ///
+  "css.validate": false,
+  "scss.validate": false,
+  "sort-imports.default-sort-style": "module",
+  "sort-imports.on-save": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "runOnSave.commands": [
+    {
+      "match": ".*\\.dart$",
+      "command": "dart-import.fix",
+      "runIn": "vscode"
+    }
+  ],
+  ///
+  ///
+  /// WEB
+  ///
+  ///
+  "emmet.triggerExpansionOnTab": true,
+  "html.format.wrapLineLength": 150,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.disableAutomaticTypeAcquisition": true
+}

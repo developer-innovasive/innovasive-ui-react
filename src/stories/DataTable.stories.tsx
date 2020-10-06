@@ -3,7 +3,7 @@ import { random, times } from 'lodash'
 import React from 'react'
 import { TableOptions } from 'react-table'
 
-import { DataTable } from '../src/index'
+import { DataTable } from '../index'
 
 export default {
   title: 'DataTable',
@@ -13,6 +13,7 @@ export default {
 const Template: Story<TableOptions<any>> = args => <DataTable {...args} />
 
 export const Default = Template.bind({})
+export const Empty = Template.bind({})
 
 Default.args = {
   initialState: {
@@ -32,4 +33,17 @@ Default.args = {
     name: `Example name ${random(1, 100)}`,
     age: random(1, 100),
   })),
+}
+
+Empty.args = {
+  columns: [
+    {
+      Header: 'รูปภาพ',
+      accessor: 'image',
+      Cell: props => <img src={props.value} alt="" className="h-32" />,
+    },
+    { Header: 'ชื่อ', accessor: 'name' },
+    { Header: 'อายุ', accessor: 'age' },
+  ],
+  data: [],
 }
