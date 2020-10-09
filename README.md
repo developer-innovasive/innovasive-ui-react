@@ -10,8 +10,9 @@ yarn add innovasive-ui-react
 
 ## Usage
 
+Update `tailwind.config.js`
+
 ```js
-//--- tailwind.config.js ---//
 const configs = require('innovasive-ui-react/src/innovasive-ui-tailwind.config')
 
 module.exports = {
@@ -26,7 +27,8 @@ module.exports = {
 }
 ```
 
+Add this to your `main.css`
+
 ```css
-//--- your-main.css ---//
 @import 'innovasive-ui-react/src/styles/index.css';
 ```
