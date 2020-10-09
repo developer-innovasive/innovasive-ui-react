@@ -12,19 +12,21 @@ yarn add innovasive-ui-react
 
 ```js
 //--- tailwind.config.js ---//
-const defaultConfigs = require('innovasive-ui-react/innovasive-ui-tailwind.config')
+const configs = require('innovasive-ui-react/src/innovasive-ui-tailwind.config')
 
 module.exports = {
   purge: {},
   theme: {
-    extend: {
-      ...defaultConfigs,
-      ///
-      /// Override your styles here.
-      ///
+    ...configs.theme,
+    ///
+    /// Override theme here...
+    ///
   },
+  ...configs.variants
 }
 ```
 
 ```css
+//--- your-main.css ---//
+@import 'innovasive-ui-react/src/styles/index.css';
 ```
