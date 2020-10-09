@@ -62,7 +62,7 @@ export const DataTable = (options: TableOptions<any>) => {
                     key={column.id}
                     className={classnames({
                       headerOverride: headerOverride,
-                      [joinClassNames(['px-24 py-16 inno-label text-innovasive-ui-grey', headerClass])]: !headerOverride,
+                      [joinClassNames(['px-24 py-16 sub-heading1 text-innovasive-ui-grey', headerClass])]: !headerOverride,
                     })}
                   >
                     {column.render('Header')}

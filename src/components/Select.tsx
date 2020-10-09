@@ -1,7 +1,7 @@
-import classnames from 'classnames'
-import React from 'react'
 import { Listbox, Transition } from '@headlessui/react'
+import classnames from 'classnames'
 import { FieldProps } from 'formik'
+import React from 'react'
 
 type Option = {
   id: string
@@ -36,14 +36,14 @@ export const Select: React.FC<SelectProps> = ({ label, value: $value, options, o
         <>
           {label && (
             <Listbox.Label>
-              <div className="mb-8 leading-3 inno-label text-innovasive-ui-label">{label}</div>
+              <div className="mb-8 text-body">{label}</div>
             </Listbox.Label>
           )}
           <div className="relative">
             <Listbox.Button
               disabled={disabled}
               className={classnames({
-                [`relative flex items-center justify-between w-full h-40 pl-24 transition duration-150 ease-in-out 
+                [`relative flex items-center justify-between w-full h-40 pl-16 transition duration-150 ease-in-out 
                 bg-white border rounded-3 focus:outline-none focus:shadow-outline 
                 disabled:bg-innovasive-ui-disabled disabled:cursor-not-allowed`]: true,
                 [`border-innovasive-ui-grey-medium`]: !error,
@@ -52,13 +52,13 @@ export const Select: React.FC<SelectProps> = ({ label, value: $value, options, o
             >
               <p
                 className={classnames({
-                  [`caption1`]: true,
+                  [`text-body`]: true,
                   [`text-innovasive-ui-grey`]: disabled || !value,
                 })}
               >
                 {value ?? label}
               </p>
-              <span className="absolute inset-y-0 right-0 flex items-center pr-24 pointer-events-none">
+              <span className="absolute inset-y-0 right-0 flex items-center pr-16 pointer-events-none">
                 <svg
                   className={classnames({
                     [`fill-current text-innovasive-ui-grey`]: true,
@@ -76,7 +76,7 @@ export const Select: React.FC<SelectProps> = ({ label, value: $value, options, o
             </Listbox.Button>
             <div
               className={classnames({
-                [`mt-8 leading-3 text-innovasive-ui-error transform inno-label transition-all h-24 duration-500 ease-in-out absolute z-0`]: true,
+                [`mt-8 text-body text-innovasive-ui-error transform transition-all duration-500 ease-in-out absolute z-0`]: true,
                 [`opacity-1 00 translate-y-0`]: error,
                 [`opacity-0 -translate-y-16`]: !error,
               })}
@@ -95,7 +95,7 @@ export const Select: React.FC<SelectProps> = ({ label, value: $value, options, o
                   {({ active }) => (
                     <div
                       className={classnames({
-                        [`flex items-center caption1 h-40 px-24 bg-white cursor-default select-none font-innovasive-ui-value focus:outline-none active:bg-innovasive-ui-active`]: true,
+                        [`flex text-body items-center h-40 px-16 bg-white cursor-default select-none focus:outline-none active:bg-innovasive-ui-active`]: true,
                         [`bg-innovasive-ui-hover`]: active,
                       })}
                     >

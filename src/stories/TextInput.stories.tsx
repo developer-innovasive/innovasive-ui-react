@@ -1,35 +1,24 @@
-import { Meta, Story } from '@storybook/react/types-6-0'
+import { Meta } from '@storybook/react/types-6-0'
 import { Field, Formik } from 'formik'
 import React from 'react'
 
-import { TextInput, TextInputProps } from '../index'
+import { TextInput, TextInputFormik } from '../components/TextInput'
 
 export default {
   title: 'TextInput',
   component: TextInput,
 } as Meta
 
-const Template: Story<TextInputProps> = args => <TextInput {...args} />
-
-export const Default = Template.bind({})
+export const Default = () => (
+  <div>
+    <TextInput label="รู้ไหม ใครเป็นพ่อของพลอย เชอร์มาลย์?" placeholder="ตอบ" />
+  </div>
+)
 
 export const Error = () => {
   return (
     <Formik initialValues={{ name: '' }} onSubmit={() => {}}>
-      <Field name="name" label="Your name" error="Required!" component={TextInput} />
+      <Field name="name" label="เบอร์โทรศัพท์" error="กรุณากรอกให้ถูกต้อง!" component={TextInputFormik} />
     </Formik>
   )
-}
-
-export const Disable = Template.bind({})
-
-Default.args = {
-  label: 'Label',
-  placeholder: 'Input Text',
-}
-
-Disable.args = {
-  label: 'Label',
-  disabled: true,
-  value: 'Innovasive co., ltd.',
 }

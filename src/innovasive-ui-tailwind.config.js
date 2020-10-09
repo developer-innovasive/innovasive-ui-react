@@ -46,12 +46,11 @@ module.exports = {
   */
   theme: {
     colors: {
+      transparent: 'transparent',
       white: '#FFFFFF',
       black: '#000000',
       'innovasive-ui': {
-        label: 'black',
         border: '#F8F8F8',
-        placeholder: 'grey',
         error: '#DA0000',
 
         grey: '#898D9E',
@@ -67,8 +66,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      'innovasive-ui-label': ['Kanit'],
-      'innovasive-ui-value': ['Sarabun'],
+      kanit: ['Kanit'],
+      sarabun: ['Sarabun'],
     },
     borderRadius: {
       full: '9999px',

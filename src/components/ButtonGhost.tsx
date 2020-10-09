@@ -3,13 +3,13 @@ import { isFunction } from 'lodash'
 import React, { MouseEvent, ReactNode } from 'react'
 
 import { ButtonBase } from './ButtonBase'
-import { Loading } from './Loading'
+import { DarkLoading } from './DarkLoading'
 
 type TitleProps = {
   disabled: boolean
 }
 
-export type ButtonSecondaryProps = {
+export type ButtonGhostProps = {
   id?: string
   title?: string | ReactNode | ((props: TitleProps) => ReactNode)
   disabled?: boolean
@@ -17,7 +17,7 @@ export type ButtonSecondaryProps = {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({ id, title, disabled = false, loading, onClick }) => {
+export const ButtonGhost: React.FC<ButtonGhostProps> = ({ id, title, disabled = false, loading, onClick }) => {
   return (
     <ButtonBase
       id={id}
@@ -26,21 +26,20 @@ export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({ id, title, dis
       className={classnames({
         [`w-full relative flex justify-center items-center rounded-3 group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
         [`cursor-pointer`]: !disabled,
-        [`cursor-default`]: loading,
-        [`active:brightness-80`]: !disabled && !loading,
         [`disabled:cursor-not-allowed`]: disabled,
+        [`active:brightness-80`]: !disabled && !loading,
       })}
     >
       {() => (
         <>
           <div className="absolute z-10">
             {loading ? (
-              <Loading />
+              <DarkLoading />
             ) : (
               <p
                 className={classnames({
-                  [`text-white heading2`]: !disabled,
-                  [`text-innovasive-ui-disabled-dark heading2`]: disabled,
+                  [`sub-heading1`]: !disabled,
+                  [`text-innovasive-ui-disabled-dark sub-heading1`]: disabled,
                 })}
               >
                 {isFunction(title) ? title({ disabled }) : title}
@@ -48,11 +47,12 @@ export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({ id, title, dis
             )}
           </div>
           <div
-            className={classnames({
+            className={classnames('w-full h-40', {
               [`w-full h-32 transition-all duration-200 ease-in-out`]: 'default',
-              [`bg-innovasive-ui-secondary`]: !disabled,
+              [`bg-innovasive-ui-grey-medium`]: !disabled,
               [`group-hover:brightness-95`]: !disabled && !loading,
               [`bg-innovasive-ui-disabled`]: disabled,
+              [`cursor-default`]: loading,
             })}
           ></div>
         </>

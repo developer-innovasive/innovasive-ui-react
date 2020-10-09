@@ -10,59 +10,58 @@
 
 @layer utilities {
   .heading1 {
-    @apply text-2xl font-medium font-innovasive-ui-label;
+    @apply text-2xl font-medium font-kanit;
   }
 
   .heading2 {
-    @apply text-base font-medium font-innovasive-ui-label;
+    @apply text-base font-medium font-kanit;
   }
 
   .text-body {
-    @apply text-base font-light font-innovasive-ui-value;
+    font-size: 16px;
+    @apply font-light font-sarabun;
   }
 
   .text-error {
-    @apply text-sm font-light font-innovasive-ui-value;
+    @apply text-sm font-light font-sarabun;
   }
 
   .sub-heading1 {
     font-size: 0.875rem;
-    @apply font-medium font-innovasive-ui-label;
+    @apply font-medium font-kanit;
   }
 
   .sub-heading2 {
-    @apply text-xs font-bold font-innovasive-ui-value;
+    @apply text-xs font-bold font-sarabun;
   }
 
   .caption1 {
     font-size: 12px;
-    @apply font-light font-innovasive-ui-value;
+    @apply font-light font-sarabun;
   }
 
   .caption2 {
     font-size: 0.5rem;
-    @apply font-light font-innovasive-ui-value;
+    @apply font-light font-sarabun;
   }
 
   .caption3 {
     font-size: 0.5rem;
-    @apply text-xs font-medium font-innovasive-ui-label;
+    @apply text-xs font-medium font-kanit;
   }
 
-  .inno-label {
-    @apply sub-heading1;
+  .absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  .inno-placeholder {
-    @apply caption1;
-  }
-
-  .inno-options-small {
-    @apply caption1;
-  }
-
-  .inno-options-default {
-    @apply text-body;
+  .absolute-start {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -50%);
   }
 
   @variants group-hover,

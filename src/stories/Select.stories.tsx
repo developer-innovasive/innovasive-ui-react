@@ -11,23 +11,6 @@ export default {
 
 const Template: Story<SelectProps> = args => <Select {...args} />
 
-export const Default = () => {
-  return (
-    <Formik initialValues={{ book: 'หนังสือรับเข้า' }} onSubmit={() => {}}>
-      <Field
-        name="book"
-        label="กรุณาเลือกประเภทหนังสือ"
-        component={Select}
-        options={[
-          { id: 'หนังสือภายใน', name: 'หนังสือภายใน' },
-          { id: 'หนังสือรับเข้า', name: 'หนังสือรับเข้า' },
-          { id: 'หนังสือชั้นความลับ', name: 'หนังสือชั้นความลับ' },
-        ]}
-      />
-    </Formik>
-  )
-}
-
 export const Error = Template.bind({})
 
 Error.args = {
@@ -50,4 +33,21 @@ Disabled.args = {
     { id: 'หนังสือรับเข้า', name: 'หนังสือรับเข้า' },
     { id: 'หนังสือชั้นความลับ', name: 'หนังสือชั้นความลับ' },
   ],
+}
+
+export const Default = () => {
+  return (
+    <Formik initialValues={{ book: 'หนังสือรับเข้า' }} onSubmit={() => {}}>
+      <Field
+        name="book"
+        label="กรุณาเลือกประเภทหนังสือ"
+        component={Select}
+        options={[
+          { id: 'หนังสือภายใน', name: 'หนังสือภายใน' },
+          { id: 'หนังสือรับเข้า', name: 'หนังสือรับเข้า' },
+          { id: 'หนังสือชั้นความลับ', name: 'หนังสือชั้นความลับ' },
+        ]}
+      />
+    </Formik>
+  )
 }
