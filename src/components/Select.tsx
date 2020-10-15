@@ -1,8 +1,8 @@
 import { Listbox, Transition } from '@headlessui/react'
 import classnames from 'classnames'
-import { FieldProps } from 'formik'
-import { map } from 'lodash'
-import React from 'react'
+import { FieldInputProps, FieldMetaProps, FieldProps, FormikProps, FormikValues } from 'formik'
+import { find, map } from 'lodash'
+import React, { SelectHTMLAttributes } from 'react'
 
 type Option = {
   label: string
@@ -10,28 +10,42 @@ type Option = {
   disabled?: boolean
 }
 
-type Props = {
-  label?: string
+type Props<V = any> = {
   value: any
   options: Option[]
-  disabled: boolean
-  error: string
+  disabled?: boolean
+  error?: string
+  label?: string
   onChange?: (value: any) => void
+  field?: FieldInputProps<V>
+  form?: FormikProps<FormikValues>
+  meta?: FieldMetaProps<V>
 }
 
-export type SelectProps = Props & FieldProps
+export type SelectProps = Props & SelectHTMLAttributes<HTMLSelectElement>
 
-export const Select: React.FC<SelectProps> = ({ label, value: $value, options, onChange: $onChange, error: $error, form, field, disabled }) => {
-  const error = form?.errors[field?.name] ?? $error
-  const value = field?.value ?? $value
+export const Select: React.FC<SelectProps> = ({
+  label,
+  value: $value,
+  options,
+  onChange: $onChange,
+  error: $error,
+  form,
+  field: { ...fields },
+  disabled = false,
+  ...restProps
+}) => {
+  const error = form?.errors[fields?.name] ?? $error
+  const value = fields?.value ?? $value
 
   return (
     <Listbox
       value={value}
       onChange={value => {
-        form?.setFieldValue(field?.name, value)
+        form?.setFieldValue(fields?.name, value)
         $onChange && $onChange(value)
       }}
+      {...restProps}
     >
       {({ open }) => (
         <>
@@ -57,7 +71,7 @@ export const Select: React.FC<SelectProps> = ({ label, value: $value, options, o
                   [`text-innovasive-ui-grey`]: disabled || !value,
                 })}
               >
-                {value ?? label}
+                {find(options, { value })?.label || label}
               </p>
               <span className="absolute inset-y-0 right-0 flex items-center pr-16 pointer-events-none">
                 <svg
@@ -84,33 +98,40 @@ export const Select: React.FC<SelectProps> = ({ label, value: $value, options, o
             >
               {error}
             </div>
-          </div>
 
-          <Transition show={open && !disabled} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
-            <Listbox.Options
-              static
-              className="relative z-10 py-4 mt-8 overflow-auto bg-white border shadow-md max-h-160 rounded-3 border-innovasive-ui-grey-medium focus:outline-none"
+            <Transition
+              show={open && !disabled}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              className="absolute z-10 w-full mt-8 bg-white border shadow-md rounded-3 border-innovasive-ui-grey-medium "
             >
-              {map(options, option => (
-                <Listbox.Option key={option.value} value={option.value} disabled={option.disabled} className="focus:outline-none">
-                  {({ active, disabled }) => (
-                    <div
-                      className={classnames({
-                        [`flex text-body items-center h-40 px-16 bg-white cursor-default select-none focus:outline-none`]: true,
-                        [`bg-innovasive-ui-hover`]: active,
-                        [`active:bg-innovasive-ui-active`]: !disabled,
-                        [`text-innovasive-ui-disabled-dark cursor-not-allowed`]: disabled,
-                      })}
-                    >
-                      {option.label}
-                    </div>
-                  )}
-                </Listbox.Option>
-              ))}
-            </Listbox.Options>
-          </Transition>
+              <Listbox.Options static className="py-4 overflow-auto max-h-160 focus:outline-none">
+                {map(options, option => (
+                  <Listbox.Option key={option.value} value={option.value} disabled={option.disabled} className="focus:outline-none">
+                    {({ active, disabled }) => (
+                      <div
+                        className={classnames({
+                          [`flex text-body items-center h-40 px-16 bg-white cursor-default select-none focus:outline-none`]: true,
+                          [`bg-innovasive-ui-hover`]: active,
+                          [`active:bg-innovasive-ui-active`]: !disabled,
+                          [`text-innovasive-ui-disabled-dark cursor-not-allowed`]: disabled,
+                        })}
+                      >
+                        {option.label}
+                      </div>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </Transition>
+          </div>
         </>
       )}
     </Listbox>
   )
 }
+
+export type SelectFormikProps = SelectProps & FieldProps
+
+export const SelectFormik: React.FC<SelectFormikProps> = args => <Select {...args} />
