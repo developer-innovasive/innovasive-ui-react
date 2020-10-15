@@ -1,52 +1,94 @@
 {
-  "name": "innovasive-ui-react",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+  "version": "0.2.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "peerDependencies": {
+    "react": ">=16"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
+  "prettier": {
+    "printWidth": 150,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "innovasive-ui-react",
+  "author": "developer-innovasive",
+  "repository": "developer-innovasive/innovasive-ui-react",
+  "module": "dist/innovasive-ui-react.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/innovasive-ui-react.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/innovasive-ui-react.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "devDependencies": {
     "@babel/core": "^7.11.6",
-    "@storybook/addon-actions": "^6.0.21",
-    "@storybook/addon-essentials": "^6.0.21",
-    "@storybook/addon-links": "^6.0.21",
-    "@storybook/node-logger": "^6.0.21",
-    "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^6.0.21",
+    "@size-limit/preset-small-lib": "^4.6.0",
+    "@storybook/addon-docs": "^6.0.26",
+    "@storybook/addon-essentials": "^6.0.26",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.0.26",
+    "@storybook/addon-storysource": "^6.0.26",
+    "@storybook/addons": "^6.0.26",
+    "@storybook/react": "^6.0.26",
+    "@types/classnames": "^2.2.10",
+    "@types/lodash": "^4.14.161",
+    "@types/luxon": "^1.25.0",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-modal": "^3.10.6",
+    "@types/react-paginate": "^6.2.1",
+    "@types/react-table": "^7.0.23",
     "babel-loader": "^8.1.0",
-    "react-is": "^16.13.1"
+    "husky": "^4.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
+    "size-limit": "^4.6.0",
+    "tsdx": "^0.14.0",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@headlessui/react": "^0.2.0",
+    "autoprefixer": "9.8.6",
+    "classnames": "^2.2.6",
+    "formik": "2.1.7",
+    "lodash": "^4.17.20",
+    "lodash-es": "^4.17.15",
+    "luxon": "^1.25.0",
+    "postcss-import": "^12.0.1",
+    "react-modal": "^3.11.2",
+    "react-paginate": "^6.5.0",
+    "react-table": "^7.5.1",
+    "tailwindcss": "1.8.13"
   }
 }
