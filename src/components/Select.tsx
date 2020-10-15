@@ -1,12 +1,13 @@
 import { Listbox, Transition } from '@headlessui/react'
 import classnames from 'classnames'
 import { FieldProps } from 'formik'
+import { map } from 'lodash'
 import React from 'react'
 
 type Option = {
-  id: string
-  name: string
-  unavailable?: boolean
+  label: string
+  value: string
+  disabled?: boolean
 }
 
 type Props = {
@@ -90,16 +91,18 @@ export const Select: React.FC<SelectProps> = ({ label, value: $value, options, o
               static
               className="relative z-10 py-4 mt-8 overflow-auto bg-white border shadow-md max-h-160 rounded-3 border-innovasive-ui-grey-medium focus:outline-none"
             >
-              {options.map(option => (
-                <Listbox.Option key={option.id} value={option.name}>
-                  {({ active }) => (
+              {map(options, option => (
+                <Listbox.Option key={option.value} value={option.value} disabled={option.disabled} className="focus:outline-none">
+                  {({ active, disabled }) => (
                     <div
                       className={classnames({
-                        [`flex text-body items-center h-40 px-16 bg-white cursor-default select-none focus:outline-none active:bg-innovasive-ui-active`]: true,
+                        [`flex text-body items-center h-40 px-16 bg-white cursor-default select-none focus:outline-none`]: true,
                         [`bg-innovasive-ui-hover`]: active,
+                        [`active:bg-innovasive-ui-active`]: !disabled,
+                        [`text-innovasive-ui-disabled-dark cursor-not-allowed`]: disabled,
                       })}
                     >
-                      {option.name}
+                      {option.label}
                     </div>
                   )}
                 </Listbox.Option>
