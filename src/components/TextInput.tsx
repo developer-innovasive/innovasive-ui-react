@@ -21,7 +21,7 @@ export const TextInput: React.FC<TextInputProps> = ({ label = '', error: $error,
       <div className="mb-8 text-body">{label}</div>
       <input
         className={classnames({
-          [`w-full border text-body text-innovasive-ui-grey rounded-3 outline-none  h-40 px-16 transition-all duration-200 ease-in-out placeholder text-body disabled:cursor-not-allowed disabled:bg-innovasive-ui-disabled`]: true,
+          [`w-full border text-body rounded-3 outline-none  h-40 px-16 transition-all duration-200 ease-in-out placeholder text-body disabled:cursor-not-allowed disabled:bg-innovasive-ui-disabled`]: true,
           [`bg-innovasive-ui-disabled-bg border-innovasive-ui-disabled-border border-innovasive-ui-error`]: error,
           [`bg-white border-innovasive-ui-grey-medium focus:border-black`]: !error,
         })}
