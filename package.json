@@ -81,7 +81,7 @@
     "@headlessui/react": "^0.2.0",
     "autoprefixer": "9.8.6",
     "classnames": "^2.2.6",
-    "formik": "^2.1.5",
+    "formik": "2.1.7",
     "lodash": "^4.17.20",
     "lodash-es": "^4.17.15",
     "luxon": "^1.25.0",
@@ -89,6 +89,6 @@
     "react-modal": "^3.11.2",
     "react-paginate": "^6.5.0",
     "react-table": "^7.5.1",
-    "tailwindcss": "^1.8.10"
+    "tailwindcss": "1.8.13"
   }
 }
