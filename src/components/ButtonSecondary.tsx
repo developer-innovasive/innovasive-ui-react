@@ -14,21 +14,31 @@ export type ButtonSecondaryProps = {
   title?: string | ReactNode | ((props: TitleProps) => ReactNode)
   disabled?: boolean
   loading?: boolean
+  rounded?: 'none' | 'default' | 'full'
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({ id, title, disabled = false, loading, onClick }) => {
+export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
+  id,
+  title,
+  disabled = false,
+  loading,
+  rounded = 'default',
+  onClick,
+}) => {
   return (
     <ButtonBase
       id={id}
       disabled={disabled || loading}
       onClick={onClick}
       className={classnames({
-        [`w-full relative flex justify-center items-center rounded-3 group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
-        [`cursor-pointer`]: !disabled,
+        [`w-full relative flex justify-center items-center group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
         [`cursor-default`]: loading,
-        [`active:brightness-80`]: !disabled && !loading,
+        [`active:brightness-80 cursor-pointer`]: !disabled && !loading,
         [`disabled:cursor-not-allowed`]: disabled,
+        [`rounded-3`]: rounded === `default`,
+        [`rounded-none`]: rounded === `none`,
+        [`rounded-full`]: rounded === `full`,
       })}
     >
       {() => (

@@ -3,7 +3,7 @@ import { isFunction } from 'lodash'
 import React, { MouseEvent, ReactNode } from 'react'
 
 import { ButtonBase } from './ButtonBase'
-import { DarkLoading } from './DarkLoading'
+import { LoadingDark } from './LoadingDark'
 
 type TitleProps = {
   disabled: boolean
@@ -14,32 +14,42 @@ export type ButtonGhostProps = {
   title?: string | ReactNode | ((props: TitleProps) => ReactNode)
   disabled?: boolean
   loading?: boolean
+  rounded?: 'none' | 'default' | 'full'
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const ButtonGhost: React.FC<ButtonGhostProps> = ({ id, title, disabled = false, loading, onClick }) => {
+export const ButtonGhost: React.FC<ButtonGhostProps> = ({
+  id,
+  title,
+  disabled = false,
+  loading,
+  rounded = 'default',
+  onClick,
+}) => {
   return (
     <ButtonBase
       id={id}
       disabled={disabled || loading}
       onClick={onClick}
       className={classnames({
-        [`w-full relative flex justify-center items-center rounded-3 group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
-        [`cursor-pointer`]: !disabled,
+        [`w-full relative flex justify-center items-center group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
         [`disabled:cursor-not-allowed`]: disabled,
-        [`active:brightness-80`]: !disabled && !loading,
+        [`active:brightness-80 cursor-pointer`]: !disabled && !loading,
+        [`rounded-3`]: rounded === `default`,
+        [`rounded-none`]: rounded === `none`,
+        [`rounded-full`]: rounded === `full`,
       })}
     >
       {() => (
         <>
           <div className="absolute z-10">
             {loading ? (
-              <DarkLoading />
+              <LoadingDark />
             ) : (
               <p
                 className={classnames({
-                  [`sub-heading1`]: !disabled,
-                  [`text-innovasive-ui-disabled-dark sub-heading1`]: disabled,
+                  [`subheading1`]: !disabled,
+                  [`text-innovasive-ui-disabled-dark subheading1`]: disabled,
                 })}
               >
                 {isFunction(title) ? title({ disabled }) : title}

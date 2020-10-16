@@ -2,9 +2,9 @@ import classnames from 'classnames'
 import React, { MouseEvent } from 'react'
 
 import { ButtonBase } from './ButtonBase'
-import { Loading } from './Loading'
+import { LoadingPrimary } from './LoadingPrimary'
 
-export type ButtonPrimaryProps = {
+export type ButtonOutlineProps = {
   id?: string
   title?: string
   disabled?: boolean
@@ -13,7 +13,7 @@ export type ButtonPrimaryProps = {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
+export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
   id,
   title,
   disabled,
@@ -27,10 +27,11 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
       disabled={disabled || loading}
       onClick={onClick}
       className={classnames({
-        [`w-full relative flex justify-center items-center group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
-        [`cursor-pointer`]: !disabled,
-        [`active:brightness-80`]: !disabled && !loading,
+        [`w-full relative flex justify-center items-center group overflow-hidden border transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
+        [`border-primary-500`]: !disabled,
+        [`active:brightness-80 cursor-pointer`]: !disabled && !loading,
         [`disabled:cursor-not-allowed`]: disabled,
+        [`cursor-default`]: loading,
         [`rounded-3`]: rounded === `default`,
         [`rounded-none`]: rounded === `none`,
         [`rounded-full`]: rounded === `full`,
@@ -40,11 +41,11 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
         <>
           <div className="absolute z-10">
             {loading ? (
-              <Loading />
+              <LoadingPrimary />
             ) : (
               <p
                 className={classnames({
-                  [`text-white heading2`]: !disabled,
+                  [`text-primary-500 heading2`]: !disabled,
                   [`text-innovasive-ui-disabled-dark heading2`]: disabled,
                 })}
               >
@@ -55,7 +56,6 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
           <div
             className={classnames('w-full h-40', {
               [`w-full h-32 transition-all duration-200 ease-in-out`]: 'default',
-              [`bg-innovasive-ui-primary`]: !disabled,
               [`group-hover:brightness-95`]: !disabled && !loading,
               [`bg-innovasive-ui-disabled`]: disabled,
               [`cursor-default`]: loading,

@@ -24,12 +24,20 @@ export function fromThaiSentenceToDateTime(date: string, format: string): DateTi
 | TIME RANGE SENTENCE
 |--------------------------------------------------
 */
-export function getTimeRangeSentence(start: DateTime, end: DateTime, locale: 'th' | 'en' = 'en'): string {
-  const outputCalendar = locale == 'th' ? 'buddhist' : 'iso8601'
+export function getTimeRangeSentence(
+  start: DateTime,
+  end: DateTime,
+  locale: 'th' | 'en' = 'en'
+): string {
+  const outputCalendar = locale === 'th' ? 'buddhist' : 'iso8601'
   const startDate = start.reconfigure({ locale, outputCalendar })
   const endDate = end.reconfigure({ locale, outputCalendar })
 
-  if (startDate.hasSame(endDate, 'days') && startDate.hasSame(endDate, 'months') && startDate.hasSame(endDate, 'years')) {
+  if (
+    startDate.hasSame(endDate, 'days') &&
+    startDate.hasSame(endDate, 'months') &&
+    startDate.hasSame(endDate, 'years')
+  ) {
     if (!startDate.hasSame(endDate, 'hours') || !startDate.hasSame(endDate, 'minutes')) {
       return `${startDate.toFormat('dd MMM yyyy T')} - ${endDate.toFormat('T')}`
     }

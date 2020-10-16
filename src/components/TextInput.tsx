@@ -13,7 +13,13 @@ type Props<V = any> = {
 
 export type TextInputProps = Props & InputHTMLAttributes<HTMLInputElement>
 
-export const TextInput: React.FC<TextInputProps> = ({ label = '', error: $error, field: { ...fields }, form, ...restProps }) => {
+export const TextInput: React.FC<TextInputProps> = ({
+  label = '',
+  error: $error,
+  field: { ...fields },
+  form,
+  ...restProps
+}) => {
   const error = form?.errors[fields?.name] ?? $error
 
   return (

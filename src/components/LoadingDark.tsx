@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const DarkLoading = () => {
+export const LoadingDark = () => {
   return (
     <div>
       <svg
@@ -8,7 +8,7 @@ export const DarkLoading = () => {
         focusable="false"
         data-prefix="fad"
         data-icon="spinner-third"
-        className="w-16 h-16 animate-spin"
+        className="w-16 h-16 cursor-default animate-spin"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"

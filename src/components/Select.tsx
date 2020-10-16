@@ -108,7 +108,12 @@ export const Select: React.FC<SelectProps> = ({
             >
               <Listbox.Options static className="py-4 overflow-auto max-h-160 focus:outline-none">
                 {map(options, option => (
-                  <Listbox.Option key={option.value} value={option.value} disabled={option.disabled} className="focus:outline-none">
+                  <Listbox.Option
+                    key={option.value}
+                    value={option.value}
+                    disabled={option.disabled}
+                    className="focus:outline-none"
+                  >
                     {({ active, disabled }) => (
                       <div
                         className={classnames({

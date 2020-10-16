@@ -20,10 +20,16 @@ export const Menu: React.FC<MenuProps> = ({ title, items }) => {
           <>
             <HeadlessMenu.Button className="flex items-center h-48 px-16 text-white transition-all duration-200 bg-innovasive-ui-primary rounded-3 focus:outline-none focus:shadow-outline">
               <div className="w-full mx-48 text-center">
-                <p className="truncate sub-heading1">{title}</p>
+                <p className="truncate subheading1">{title}</p>
               </div>
               <div className="flex-shrink-0">
-                <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="9"
+                  height="6"
+                  viewBox="0 0 9 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M1.15333 0.874976L7.84708 0.874977C8.44895 0.874977 8.74989 1.58318 8.3252 1.99607L4.97833 5.24998C4.71395 5.50701 4.28645 5.50701 4.02489 5.24998L0.678016 1.99607C0.250516 1.58318 0.551453 0.874976 1.15333 0.874976Z"
                     fill="white"

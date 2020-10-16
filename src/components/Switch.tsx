@@ -13,7 +13,14 @@ type SwitchProps<V = any> = {
   meta?: FieldMetaProps<V>
 }
 
-export const Switch: React.FC<SwitchProps> = ({ label, checked: $checked, disabled = false, onChange: $onChange, field, form }) => {
+export const Switch: React.FC<SwitchProps> = ({
+  label,
+  checked: $checked,
+  disabled = false,
+  onChange: $onChange,
+  field,
+  form,
+}) => {
   const checked = field?.checked ?? $checked
 
   return (
