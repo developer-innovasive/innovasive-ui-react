@@ -50,7 +50,7 @@ export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
               <p
                 className={classnames({
                   [`text-white heading2`]: !disabled,
-                  [`text-innovasive-ui-disabled-dark heading2`]: disabled,
+                  [`text-grey-500 heading2`]: disabled,
                 })}
               >
                 {isFunction(title) ? title({ disabled }) : title}
@@ -60,9 +60,9 @@ export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
           <div
             className={classnames({
               [`w-full h-32 transition-all duration-200 ease-in-out`]: 'default',
-              [`bg-innovasive-ui-secondary`]: !disabled,
+              [`bg-secondary-700`]: !disabled,
               [`group-hover:brightness-95`]: !disabled && !loading,
-              [`bg-innovasive-ui-disabled`]: disabled,
+              [`bg-grey-100`]: disabled,
             })}
           ></div>
         </>

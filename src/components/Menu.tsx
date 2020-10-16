@@ -18,7 +18,7 @@ export const Menu: React.FC<MenuProps> = ({ title, items }) => {
       <HeadlessMenu>
         {({ open }) => (
           <>
-            <HeadlessMenu.Button className="flex items-center h-48 px-16 text-white transition-all duration-200 bg-innovasive-ui-primary rounded-3 focus:outline-none focus:shadow-outline">
+            <HeadlessMenu.Button className="flex items-center h-48 px-16 text-white transition-all duration-200 bg-primary-500 rounded-3 focus:outline-none focus:shadow-outline">
               <div className="w-full mx-48 text-center">
                 <p className="truncate subheading1">{title}</p>
               </div>
@@ -48,12 +48,12 @@ export const Menu: React.FC<MenuProps> = ({ title, items }) => {
             >
               <HeadlessMenu.Items
                 static
-                className="absolute right-0 min-w-full py-4 mt-8 overflow-hidden bg-white border shadow-md border-innovasive-ui-grey-medium focus:outline-none rounded-3"
+                className="absolute right-0 min-w-full py-4 mt-8 overflow-hidden bg-white border shadow-md border-grey-300 focus:outline-none rounded-3"
               >
                 {map(items, item => (
                   <HeadlessMenu.Item
                     onClick={item.onClick}
-                    className="flex items-center w-full h-40 px-16 cursor-pointer text-body hover:bg-innovasive-ui-grey-light active:bg-innovasive-ui-grey-medium focus:outline-none"
+                    className="flex items-center w-full h-40 px-16 cursor-pointer text-body hover:bg-grey-100 active:bg-grey-300 focus:outline-none"
                     as="button"
                   >
                     {isFunction(item.title) ? item.title() : item.title}

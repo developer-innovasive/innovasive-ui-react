@@ -49,7 +49,7 @@ export const ButtonGhost: React.FC<ButtonGhostProps> = ({
               <p
                 className={classnames({
                   [`subheading1`]: !disabled,
-                  [`text-innovasive-ui-disabled-dark subheading1`]: disabled,
+                  [`text-grey-500 subheading1`]: disabled,
                 })}
               >
                 {isFunction(title) ? title({ disabled }) : title}
@@ -59,9 +59,9 @@ export const ButtonGhost: React.FC<ButtonGhostProps> = ({
           <div
             className={classnames('w-full h-40', {
               [`w-full h-32 transition-all duration-200 ease-in-out`]: 'default',
-              [`bg-innovasive-ui-grey-medium`]: !disabled,
+              [`bg-grey-300`]: !disabled,
               [`group-hover:brightness-95`]: !disabled && !loading,
-              [`bg-innovasive-ui-disabled`]: disabled,
+              [`bg-grey-100`]: disabled,
               [`cursor-default`]: loading,
             })}
           ></div>

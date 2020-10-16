@@ -60,15 +60,15 @@ export const Select: React.FC<SelectProps> = ({
               className={classnames({
                 [`relative flex items-center justify-between w-full h-40 pl-16 transition duration-150 ease-in-out 
                 bg-white border rounded-3 focus:outline-none focus:shadow-outline 
-                disabled:bg-innovasive-ui-disabled disabled:cursor-not-allowed`]: true,
-                [`border-innovasive-ui-grey-medium`]: !error,
-                [`border-innovasive-ui-error`]: error,
+                disabled:bg-grey-100 disabled:cursor-not-allowed`]: true,
+                [`border-grey-300`]: !error,
+                [`border-red-500`]: error,
               })}
             >
               <p
                 className={classnames({
                   [`text-body`]: true,
-                  [`text-innovasive-ui-grey`]: disabled || !value,
+                  [`text-grey-500`]: disabled || !value,
                 })}
               >
                 {find(options, { value })?.label || label}
@@ -76,8 +76,7 @@ export const Select: React.FC<SelectProps> = ({
               <span className="absolute inset-y-0 right-0 flex items-center pr-16 pointer-events-none">
                 <svg
                   className={classnames({
-                    [`fill-current text-innovasive-ui-grey`]: true,
-                    [`text-innovasive-ui-grey`]: disabled,
+                    [`fill-current text-grey-500`]: true,
                   })}
                   width="11"
                   height="7"
@@ -91,7 +90,7 @@ export const Select: React.FC<SelectProps> = ({
             </Listbox.Button>
             <div
               className={classnames({
-                [`mt-8 text-body text-innovasive-ui-error transform transition-all duration-500 ease-in-out absolute z-0`]: true,
+                [`mt-8 text-body text-red-500 transform transition-all duration-500 ease-in-out absolute z-0`]: true,
                 [`opacity-1 00 translate-y-0`]: error,
                 [`opacity-0 -translate-y-16`]: !error,
               })}
@@ -104,7 +103,7 @@ export const Select: React.FC<SelectProps> = ({
               leave="transition ease-in duration-100"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
-              className="absolute z-10 w-full mt-8 bg-white border shadow-md rounded-3 border-innovasive-ui-grey-medium "
+              className="absolute z-10 w-full mt-8 bg-white border shadow-md rounded-3 border-grey-300"
             >
               <Listbox.Options static className="py-4 overflow-auto max-h-160 focus:outline-none">
                 {map(options, option => (
@@ -118,9 +117,9 @@ export const Select: React.FC<SelectProps> = ({
                       <div
                         className={classnames({
                           [`flex text-body items-center h-40 px-16 bg-white cursor-default select-none focus:outline-none`]: true,
-                          [`bg-innovasive-ui-hover`]: active,
-                          [`active:bg-innovasive-ui-active`]: !disabled,
-                          [`text-innovasive-ui-disabled-dark cursor-not-allowed`]: disabled,
+                          [`bg-grey-100`]: active,
+                          [`active:bg-grey-300`]: !disabled,
+                          [`text-grey-500 cursor-not-allowed`]: disabled,
                         })}
                       >
                         {option.label}

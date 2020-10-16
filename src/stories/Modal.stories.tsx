@@ -40,12 +40,12 @@ export const Default = () => {
           </div>
 
           <p className="w-full mb-24 text-xl font-bold">DONE</p>
-          <p className="text-innovasive-ui-grey">Successfully created.</p>
+          <p className="text-grey-500">Successfully created.</p>
         </div>
       </ModalBase>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-16 py-8 text-white border rounded-3 bg-innovasive-ui-primary"
+        className="px-16 py-8 text-white border rounded-3 bg-primary-500"
       >
         Open modal
       </button>
@@ -68,7 +68,7 @@ export const Confirm = () => {
       />
       <button
         onClick={() => setIsOpen(true)}
-        className="px-16 py-8 text-white border rounded-3 bg-innovasive-ui-primary"
+        className="px-16 py-8 text-white border rounded-3 bg-primary-500"
       >
         Open modal
       </button>

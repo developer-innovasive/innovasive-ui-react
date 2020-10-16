@@ -27,7 +27,7 @@ export const ModalBase: React.FC<ModalBaseProps> = ({ isOpen, children, onReques
           >
             <div
               ref={ref}
-              className="overflow-hidden bg-white border shadow-xl rounded-20 border-innovasive-ui-grey-light"
+              className="overflow-hidden bg-white border shadow-xl rounded-20 border-grey-100"
             >
               {children}
             </div>

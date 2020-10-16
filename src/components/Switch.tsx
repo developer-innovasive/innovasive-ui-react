@@ -37,8 +37,8 @@ export const Switch: React.FC<SwitchProps> = ({
         }}
         className={classnames({
           [`relative inline-flex h-24 w-40 flex-shrink-0 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full focus:outline-none focus:shadow-outline`]: true,
-          [`bg-innovasive-ui-grey-medium`]: !checked,
-          [`bg-innovasive-ui-primary`]: checked,
+          [`bg-grey-300`]: !checked,
+          [`bg-primary-500`]: checked,
           [`cursor-pointer`]: !disabled,
           [`cursor-not-allowed bg-opacity-50`]: disabled,
         })}

@@ -17,7 +17,7 @@ export const ModalConfirm: React.FC<ModalConfirmProps> = ({ isOpen, onConfirm, o
         <div className="mb-32">
           <div className="flex items-center justify-center mb-24">
             <svg
-              className="w-32 h-32 fill-current text-innovasive-ui-grey"
+              className="w-32 h-32 fill-current text-grey-500"
               viewBox="0 0 40 45"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

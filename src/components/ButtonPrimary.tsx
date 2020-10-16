@@ -45,7 +45,7 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
               <p
                 className={classnames({
                   [`text-white heading2`]: !disabled,
-                  [`text-innovasive-ui-disabled-dark heading2`]: disabled,
+                  [`text-grey-500 heading2`]: disabled,
                 })}
               >
                 {title}
@@ -55,9 +55,9 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
           <div
             className={classnames('w-full h-40', {
               [`w-full h-32 transition-all duration-200 ease-in-out`]: 'default',
-              [`bg-innovasive-ui-primary`]: !disabled,
+              [`bg-primary-500`]: !disabled,
               [`group-hover:brightness-95`]: !disabled && !loading,
-              [`bg-innovasive-ui-disabled`]: disabled,
+              [`bg-grey-100`]: disabled,
               [`cursor-default`]: loading,
             })}
           ></div>

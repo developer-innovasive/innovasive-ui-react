@@ -27,16 +27,16 @@ export const TextInput: React.FC<TextInputProps> = ({
       <div className="mb-8 text-body">{label}</div>
       <input
         className={classnames({
-          [`w-full border text-body rounded-3 outline-none  h-40 px-16 transition-all duration-200 ease-in-out placeholder text-body disabled:cursor-not-allowed disabled:bg-innovasive-ui-disabled`]: true,
-          [`bg-innovasive-ui-disabled-bg border-innovasive-ui-disabled-border border-innovasive-ui-error`]: error,
-          [`bg-white border-innovasive-ui-grey-medium focus:border-black`]: !error,
+          [`w-full border text-body rounded-3 outline-none  h-40 px-16 transition-all duration-200 ease-in-out placeholder text-body disabled:cursor-not-allowed disabled:bg-grey-100`]: true,
+          [`bg-grey-100 border-red-500`]: error,
+          [`bg-white border-grey-500 focus:border-black`]: !error,
         })}
         {...restProps}
         {...fields}
       />
       <div
         className={classnames({
-          [`mt-8 text-innovasive-ui-error transform text-body transition-all h-24 duration-500 ease-in-out`]: true,
+          [`mt-8 text-red-500 transform text-body transition-all h-24 duration-500 ease-in-out`]: true,
           [`opacity-1 00 translate-y-0`]: error,
           [`opacity-0 -translate-y-16`]: !error,
         })}
