@@ -2,19 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base */
+
 @layer base {
   html {
     @apply antialiased;
   }
+
+  h1 {
+    font-size: 24px;
+    @apply font-medium font-kanit;
+  }
+
+  h2 {
+    font-size: 16px;
+    @apply font-medium font-kanit;
+  }
+
+  p {
+    font-size: 16px;
+    @apply font-light font-sarabun;
+  }
 }
+
+/* Typography */
 
 @layer utilities {
   .heading1 {
-    @apply text-2xl font-medium font-kanit;
+    font-size: 24px;
+    @apply font-medium font-kanit;
   }
 
   .heading2 {
-    @apply text-base font-medium font-kanit;
+    font-size: 16px;
+    @apply font-medium font-kanit;
   }
 
   .text-body {
@@ -23,16 +44,18 @@
   }
 
   .text-error {
-    @apply text-sm font-light font-sarabun;
+    font-size: 12px;
+    @apply font-light font-sarabun;
   }
 
-  .sub-heading1 {
-    font-size: 0.875rem;
+  .subheading1 {
+    font-size: 14px;
     @apply font-medium font-kanit;
   }
 
-  .sub-heading2 {
-    @apply text-xs font-bold font-sarabun;
+  .subheading2 {
+    font-size: 12px;
+    @apply font-medium font-sarabun;
   }
 
   .caption1 {
@@ -41,15 +64,19 @@
   }
 
   .caption2 {
-    font-size: 0.5rem;
+    font-size: 9px;
     @apply font-light font-sarabun;
   }
 
   .caption3 {
-    font-size: 0.5rem;
-    @apply text-xs font-medium font-kanit;
+    font-size: 9px;
+    @apply font-medium font-kanit;
   }
+}
 
+/* Position */
+
+@layer utilities {
   .absolute-center {
     position: absolute;
     top: 50%;
@@ -63,9 +90,12 @@
     left: 50%;
     transform: translate(-60%, -50%);
   }
+}
 
-  @variants group-hover,
-  active {
+/* Filter */
+
+@layer utilities {
+  @variants group-hover, active {
     .brightness-95 {
       filter: brightness(95%);
     }

@@ -89,6 +89,6 @@
     "react-modal": "^3.11.2",
     "react-paginate": "^6.5.0",
     "react-table": "^7.5.1",
-    "tailwindcss": "1.8.13"
+    "tailwindcss": "1.9.2"
   }
 }
