@@ -30,7 +30,7 @@ export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
         [`w-full relative flex justify-center items-center group overflow-hidden border transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
         [`border-primary-500`]: !disabled,
         [`active:brightness-80 cursor-pointer`]: !disabled && !loading,
-        [`disabled:cursor-not-allowed`]: disabled,
+        [`disabled:cursor-not-allowed border-grey-300`]: disabled,
         [`cursor-default`]: loading,
         [`rounded-3`]: rounded === `default`,
         [`rounded-none`]: rounded === `none`,
