@@ -18,7 +18,7 @@ Update `tailwind.config.js`
 
 ```js
 module.exports = {
-  presets: [require('innovasive-ui-react/tailwind.config')],
+  presets: [require('innovasive-ui-react/src/tailwind.config')],
 }
 ```
 
