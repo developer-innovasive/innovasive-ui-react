@@ -49,8 +49,9 @@ export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
             ) : (
               <p
                 className={classnames({
-                  [`text-white heading2`]: !disabled,
-                  [`text-grey-500 heading2`]: disabled,
+                  [`subheading1`]: 'default',
+                  [`text-white`]: !disabled,
+                  [`text-grey-500`]: disabled,
                 })}
               >
                 {isFunction(title) ? title({ disabled }) : title}

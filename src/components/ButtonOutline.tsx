@@ -45,8 +45,9 @@ export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
             ) : (
               <p
                 className={classnames({
-                  [`text-primary-500 heading2`]: !disabled,
-                  [`text-grey-500 heading2`]: disabled,
+                  [`subheading1`]: 'default',
+                  [`text-primary-500`]: !disabled,
+                  [`text-grey-500`]: disabled,
                 })}
               >
                 {title}
