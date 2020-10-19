@@ -48,8 +48,8 @@ export const ButtonGhost: React.FC<ButtonGhostProps> = ({
             ) : (
               <p
                 className={classnames({
-                  [`subheading1`]: !disabled,
-                  [`text-grey-500 subheading1`]: disabled,
+                  [`subheading1`]: 'default',
+                  [`text-grey-500`]: disabled,
                 })}
               >
                 {isFunction(title) ? title({ disabled }) : title}
