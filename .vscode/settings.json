@@ -12,6 +12,8 @@
   /// FORMATTER
   ///
   ///
+  "prettier.requireConfig": true,
+  "prettier.configPath": ".prettierrc",
   "css.validate": false,
   "scss.validate": false,
   "sort-imports.default-sort-style": "module",

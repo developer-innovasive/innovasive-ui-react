@@ -4,53 +4,25 @@ Innovasive UI ถูกสร้างขึ้นเพื่อให้เก
 
 ![npm version](https://img.shields.io/npm/v/innovasive-ui-react?style=for-the-badge)
 
+## Requirement
+
+`tailwindcss` ^v1.9.0
+
 ## Installation
 
 ```
 yarn add innovasive-ui-react
 ```
 
-## Usage
-
 Update `tailwind.config.js`
 
 ```js
-const configs = require('innovasive-ui-react/src/innovasive-ui-tailwind.config')
-
 module.exports = {
-  future: {
-    ...configs.future,
-    ///
-    /// Override future...
-    ///
-  },
-  purge: {
-    ...configs.purge,
-    ///
-    /// Override purge...
-    ///
-  },
-  theme: {
-    ...configs.theme,
-    ///
-    /// Override theme...
-    ///
-    extend: {
-      ///
-      /// Extend...
-      ///
-    },
-  },
-  variants: {
-    ...configs.variants,
-    ///
-    /// Override variants...
-    ///
-  },
+  presets: [require('innovasive-ui-react/tailwind.config')],
 }
 ```
 
-Add this to your `main.css`
+Add styles to your `main.css`
 
 ```css
 @import 'innovasive-ui-react/src/styles/index.css';

@@ -2,7 +2,11 @@ import { Meta } from '@storybook/react/types-6-0'
 import { DateTime } from 'luxon'
 import React from 'react'
 
-import { fromDateTimeToThaiSentence, fromThaiSentenceToDateTime, getTimeRangeSentence } from '../../helpers/date-helpers'
+import {
+  fromDateTimeToThaiSentence,
+  fromThaiSentenceToDateTime,
+  getTimeRangeSentence,
+} from '../../helpers/date-helpers'
 
 export default {
   title: 'Helpers/Date Helpers',
@@ -19,7 +23,12 @@ FromDateTimeToThaiSentence.storyName = 'fromDateTimeToThaiSentence'
 
 export const FromThaiSentenceToDateTime = () => (
   <div>
-    <p>{fromDateTimeToThaiSentence(fromThaiSentenceToDateTime('09 ต.ค. 2563', 'dd MMM yyyy'), 'EEE, dd MMMM yyyy')}</p>
+    <p>
+      {fromDateTimeToThaiSentence(
+        fromThaiSentenceToDateTime('09 ต.ค. 2563', 'dd MMM yyyy'),
+        'EEE, dd MMMM yyyy'
+      )}
+    </p>
   </div>
 )
 

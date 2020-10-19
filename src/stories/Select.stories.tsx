@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react/types-6-0'
 import { Field, Formik } from 'formik'
 import React from 'react'
 
-import { Select, SelectProps } from '../components/Select'
+import { Select, SelectFormik, SelectProps } from '../components/Select'
 
 export default {
   title: 'Select',
@@ -11,28 +11,32 @@ export default {
 
 const Template: Story<SelectProps> = args => <Select {...args} />
 
-export const Error = Template.bind({})
-
-Error.args = {
-  label: 'กรุณาเลือกประเภทหนังสือ',
-  error: 'กรุณาเลือก',
-  options: [
-    { label: 'หนังสือภายใน', value: 'หนังสือภายใน' },
-    { label: 'หนังสือรับเข้า', value: 'หนังสือรับเข้า' },
-    { label: 'หนังสือชั้นความลับ', value: 'หนังสือชั้นความลับ' },
-  ],
-}
-
 export const Disabled = Template.bind({})
 
 Disabled.args = {
   label: 'กรุณาเลือกประเภทหนังสือ',
   disabled: true,
   options: [
-    { label: 'หนังสือภายใน', value: 'หนังสือภายใน' },
-    { label: 'หนังสือรับเข้า', value: 'หนังสือรับเข้า' },
-    { label: 'หนังสือชั้นความลับ', value: 'หนังสือชั้นความลับ' },
+    { label: 'หนังสือภายใน', value: '1' },
+    { label: 'หนังสือรับเข้า', value: '2' },
+    { label: 'หนังสือชั้นความลับ', value: '3' },
   ],
+}
+
+export const Error = () => {
+  return (
+    <Select
+      label="กรุณาเลือกประเภทหนังสือ"
+      value=""
+      error="กรุณาเลือก!"
+      onChange={(val: any) => console.log(val)}
+      options={[
+        { label: 'หนังสือภายใน', value: '1' },
+        { label: 'หนังสือรับเข้า', value: '2', disabled: true },
+        { label: 'หนังสือชั้นความลับ', value: '3' },
+      ]}
+    />
+  )
 }
 
 export const Default = () => {
@@ -41,11 +45,11 @@ export const Default = () => {
       <Field
         name="book"
         label="กรุณาเลือกประเภทหนังสือ"
-        component={Select}
+        component={SelectFormik}
         options={[
-          { label: 'หนังสือภายใน', value: 'หนังสือภายใน' },
-          { label: 'หนังสือรับเข้า', value: 'หนังสือรับเข้า', disabled: true },
-          { label: 'หนังสือชั้นความลับ', value: 'หนังสือชั้นความลับ' },
+          { label: 'หนังสือภายใน', value: '1' },
+          { label: 'หนังสือรับเข้า', value: '2', disabled: true },
+          { label: 'หนังสือชั้นความลับ', value: '3' },
         ]}
       />
     </Formik>

@@ -9,20 +9,31 @@ export type ButtonPrimaryProps = {
   title?: string
   disabled?: boolean
   loading?: boolean
+  rounded?: 'none' | 'default' | 'full'
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({ id, title, disabled, loading, onClick }) => {
+export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
+  id,
+  title,
+  disabled,
+  loading,
+  rounded = 'default',
+  onClick,
+}) => {
   return (
     <ButtonBase
       id={id}
       disabled={disabled || loading}
       onClick={onClick}
       className={classnames({
-        [`w-full relative flex justify-center items-center rounded-3 group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
+        [`w-full relative flex justify-center items-center group overflow-hidden transition-all duration-200 focus:outline-none focus:shadow-outline`]: 'default',
         [`cursor-pointer`]: !disabled,
         [`active:brightness-80`]: !disabled && !loading,
         [`disabled:cursor-not-allowed`]: disabled,
+        [`rounded-3`]: rounded === `default`,
+        [`rounded-none`]: rounded === `none`,
+        [`rounded-full`]: rounded === `full`,
       })}
     >
       {() => (
@@ -34,7 +45,7 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({ id, title, disable
               <p
                 className={classnames({
                   [`text-white heading2`]: !disabled,
-                  [`text-innovasive-ui-disabled-dark heading2`]: disabled,
+                  [`text-grey-500 heading2`]: disabled,
                 })}
               >
                 {title}
@@ -44,9 +55,9 @@ export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({ id, title, disable
           <div
             className={classnames('w-full h-40', {
               [`w-full h-32 transition-all duration-200 ease-in-out`]: 'default',
-              [`bg-innovasive-ui-primary`]: !disabled,
+              [`bg-primary-500`]: !disabled,
               [`group-hover:brightness-95`]: !disabled && !loading,
-              [`bg-innovasive-ui-disabled`]: disabled,
+              [`bg-grey-100`]: disabled,
               [`cursor-default`]: loading,
             })}
           ></div>

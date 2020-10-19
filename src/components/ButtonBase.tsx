@@ -12,7 +12,13 @@ export type ButtonBaseProps = {
   children?: (props: BaseButtonChildrenProps) => ReactNode
 }
 
-export const ButtonBase: React.FC<ButtonBaseProps> = ({ id, disabled = false, className, onClick, children = () => <div></div> }) => {
+export const ButtonBase: React.FC<ButtonBaseProps> = ({
+  id,
+  disabled = false,
+  className,
+  onClick,
+  children = () => <div></div>,
+}) => {
   return (
     <button id={id} onClick={onClick} disabled={disabled} className={className}>
       {children({ disabled })}

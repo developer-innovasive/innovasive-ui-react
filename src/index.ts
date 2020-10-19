@@ -19,6 +19,7 @@ export * from './components/ButtonBase'
 export * from './components/ButtonPrimary'
 export * from './components/ButtonSecondary'
 export * from './components/ButtonIcon'
+export * from './components/ButtonOutline'
 /**
 |--------------------------------------------------
 | MENU
@@ -50,7 +51,8 @@ export * from './components/ModalConfirm'
 |--------------------------------------------------
 */
 export * from './components/Loading'
-export * from './components/DarkLoading'
+export * from './components/LoadingDark'
+export * from './components/LoadingPrimary'
 /**
 |--------------------------------------------------
 | HELPERS

@@ -18,7 +18,12 @@ export const Default = () => (
 export const Error = () => {
   return (
     <Formik initialValues={{ name: '' }} onSubmit={() => {}}>
-      <Field name="name" label="เบอร์โทรศัพท์" error="กรุณากรอกให้ถูกต้อง!" component={TextInputFormik} />
+      <Field
+        name="name"
+        label="เบอร์โทรศัพท์"
+        error="กรุณากรอกให้ถูกต้อง!"
+        component={TextInputFormik}
+      />
     </Formik>
   )
 }

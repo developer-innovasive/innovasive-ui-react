@@ -1,5 +1,5 @@
 {
-  "version": "0.2.2",
+  "version": "0.3",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -30,7 +30,7 @@
     }
   },
   "prettier": {
-    "printWidth": 150,
+    "printWidth": 100,
     "semi": false,
     "singleQuote": true,
     "trailingComma": "es5"
@@ -89,6 +89,6 @@
     "react-modal": "^3.11.2",
     "react-paginate": "^6.5.0",
     "react-table": "^7.5.1",
-    "tailwindcss": "1.8.13"
+    "tailwindcss": "1.9.2"
   }
 }

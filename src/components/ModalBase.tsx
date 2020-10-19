@@ -25,7 +25,10 @@ export const ModalBase: React.FC<ModalBaseProps> = ({ isOpen, children, onReques
             leaveFrom="scale-100 opacity-100"
             leaveTo="scale-90 opacity-0"
           >
-            <div ref={ref} className="overflow-hidden bg-white border shadow-xl rounded-20 border-innovasive-ui-grey-light">
+            <div
+              ref={ref}
+              className="overflow-hidden bg-white border shadow-xl rounded-20 border-grey-100"
+            >
               {children}
             </div>
           </Transition.Child>
